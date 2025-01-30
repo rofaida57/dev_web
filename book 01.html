@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+
+    <title>جدول أكواد HTML</title>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: right;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-size: 18px;
+        }
+        th {
+            background-color: rgb(147, 170, 192);;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+        .back-button {
+    background-color: #ff781e;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed; /* لجعل الزر ثابتًا */
+    top: 20px; /* المسافة من أعلى الصفحة */
+    left: 20px; /* المسافة من يسار الصفحة */
+    z-index: 1000; /* تأكد من أن الزر يظهر فوق المحتوى */
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+}
+
+    </style>
+</head>
+<body>
+    <h2> : HTML اساسيات</h2>
+    <button onclick="goBack()" class="back-button">رجوع</button>
+
+    <table>
+        <tr>
+            <th>الكود</th>
+            <th>الوظيفة</th>
+        </tr>
+        <tr>
+            <td>&lt;ul&gt;</td>
+            <td>قائمة غير مرتبة (نقاط)</td>
+        </tr>
+        <tr>
+            <td>&lt;ol&gt;</td>
+            <td>قائمة مرتبة (أرقام)</td>
+        </tr>
+        <tr>
+            <td>&lt;li&gt;</td>
+            <td>عنصر داخل قائمة (&lt;ul&gt; أو &lt;ol&gt;)</td>
+        </tr>
+        <tr>
+            <td>&lt;table&gt;</td>
+            <td>إنشاء جدول</td>
+        </tr>
+        <tr>
+            <td>&lt;tr&gt;</td>
+            <td>صف داخل الجدول</td>
+        </tr>
+        <tr>
+            <td>&lt;td&gt;</td>
+            <td>خلية داخل الجدول</td>
+        </tr>
+        <tr>
+            <td>&lt;th&gt;</td>
+            <td>خلية عنوان في الجدول (تظهر بخط غامق)</td>
+        </tr>
+        <tr>
+            <td>&lt;form&gt;</td>
+            <td>إنشاء نموذج إدخال بيانات</td>
+        </tr>
+        <tr>
+            <td>&lt;input type="text"&gt;</td>
+            <td>إدخال نصي في النموذج</td>
+        </tr>
+        <tr>
+            <td>&lt;input type="password"&gt;</td>
+            <td>إدخال كلمة مرور</td>
+        </tr>
+        <tr>
+            <td>&lt;input type="submit"&gt;</td>
+            <td>زر إرسال البيانات</td>
+        </tr>
+        <tr>
+            <td>&lt;textarea&gt;</td>
+            <td>حقل نصي متعدد الأسطر</td>
+        </tr>
+        <tr>
+            <td>&lt;select&gt;</td>
+            <td>قائمة منسدلة</td>
+        </tr>
+        <tr>
+            <td>&lt;option&gt;</td>
+            <td>خيار داخل القائمة المنسدلة</td>
+        </tr>
+        <tr>
+            <td>&lt;button&gt;</td>
+            <td>زر قابل للضغط</td>
+        </tr>
+        <tr>
+            <td>&lt;div&gt;</td>
+            <td>عنصر تقسيم عام بدون معنى محدد</td>
+        </tr>
+        <tr>
+            <td>&lt;span&gt;</td>
+            <td>عنصر نصي يستخدم لتنسيق جزء من النص</td>
+        </tr>
+        <tr>
+            <td>&lt;header&gt;</td>
+            <td>رأس الصفحة</td>
+        </tr>
+        <tr>
+            <td>&lt;footer&gt;</td>
+            <td>تذييل الصفحة</td>
+        </tr>
+        <tr>
+            <td>&lt;nav&gt;</td>
+            <td>قائمة تنقل</td>
+        </tr>
+        <tr>
+            <td>&lt;section&gt;</td>
+            <td>قسم داخل الصفحة</td>
+        </tr>
+        <tr>
+            <td>&lt;article&gt;</td>
+            <td>مقالة أو محتوى مستقل</td>
+        </tr>
+        <tr>
+            <td>&lt;aside&gt;</td>
+            <td>محتوى جانبي</td>
+        </tr>
+        <tr>
+            <td>&lt;main&gt;</td>
+            <td>يحدد القسم الرئيسي للمحتوى</td>
+        </tr>
+        <tr>
+            <td>&lt;iframe src="URL"&gt;</td>
+            <td>إدراج صفحة داخل صفحة (إطار مضمّن)</td>
+        </tr>
+        <tr>
+            <td>&lt;!-- تعليق --&gt;</td>
+            <td>تعليق لا يظهر في الصفحة</td>
+        </tr>
+    </table>
+    <script>
+        function goBack() {
+            window.history.back();  // الرجوع إلى الصفحة السابقة
+        }
+    </script>
+    
+</body>
+</html>

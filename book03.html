@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+
+    <title>مرجع JavaScript الأساسي</title>
+    <style>
+        body { 
+            padding: 20px; 
+            background-color: #f8f9fa;
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        pre {
+            background:rgb(163, 187, 207);
+            padding: 10px; 
+            border-radius: 5px;
+            font-size: 18px;
+            text-align: left;
+        }
+        .container {
+            max-width: 100%;
+            padding: 10px;
+        }
+        .back-button {
+    background-color: #ff781e;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed; /* لجعل الزر ثابتًا */
+    top: 20px; /* المسافة من أعلى الصفحة */
+    left: 20px; /* المسافة من يسار الصفحة */
+    z-index: 1000; /* تأكد من أن الزر يظهر فوق المحتوى */
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #2e6285;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+       <h1> : JavaScript اساسيات </h1>
+       <button onclick="goBack()" class="back-button">رجوع</button>
+
+        <h2>1. طباعة القيم في وحدة التحكم</h2>
+        <pre>
+console.log("Hello, World!");
+        </pre>
+        
+        <h2>2. تعريف المتغيرات</h2>
+        <pre>
+let name = "Ali";
+const PI = 3.14;
+var age = 25;
+        </pre>
+        
+        <h2>3. أنواع البيانات الأساسية</h2>
+        <pre>
+let number = 10;
+let text = "JavaScript";
+let isTrue = true;
+let list = [1, 2, 3];
+let person = { name: "Ali", age: 25 };
+let nothing = null;
+let unknown;
+        </pre>
+        
+        <h2>4. الشروط (if - else)</h2>
+        <pre>
+if (score >= 90) {
+    console.log("ممتاز");
+} else if (score >= 70) {
+    console.log("جيد");
+} else {
+    console.log("ضعيف");
+}
+        </pre>
+        
+        <h2>5. الحلقات التكرارية</h2>
+        <pre>
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+        </pre>
+        
+        <h2>6. إنشاء دالة</h2>
+        <pre>
+function greet(name) {
+    return "مرحبًا " + name;
+}
+        </pre>
+        
+        <h2>7. استخدام الدوال السهمية</h2>
+        <pre>
+const sum = (a, b) => a + b;
+        </pre>
+        
+        <h2>8. التعامل مع المصفوفات</h2>
+        <pre>
+numbers.forEach(num => console.log(num));
+let doubled = numbers.map(num => num * 2);
+        </pre>
+        
+        <h2>9. التعامل مع الكائنات</h2>
+        <pre>
+let person = {
+    name: "Ali",
+    age: 25,
+    greet() {
+        console.log("مرحبًا، اسمي " + this.name);
+    }
+};
+        </pre>
+        
+        <h2>10. التحقق من القيم</h2>
+        <pre>
+console.log(5 == "5");  // true
+console.log(5 === "5"); // false
+        </pre>
+        
+        <h2>11. التعامل مع الوقت والتاريخ</h2>
+        <pre>
+let now = new Date();
+console.log(now.toLocaleString());
+        </pre>
+        
+        <h2>12. استخدام setTimeout و setInterval</h2>
+        <pre>
+setTimeout(() => console.log("تم التنفيذ"), 2000);
+setInterval(() => console.log("تكرار"), 1000);
+        </pre>
+        
+        <h2>13. استخدام try...catch</h2>
+        <pre>
+try {
+    let result = x / 0;
+} catch (error) {
+    console.log("حدث خطأ: " + error.message);
+}
+        </pre>
+        
+        <h2>14. جلب بيانات من API</h2>
+        <pre>
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log("خطأ: " + error));
+        </pre>
+        
+        <h2>15. التفاعل مع HTML باستخدام DOM</h2>
+        <pre>
+document.getElementById("myElement").innerText = "تم التغيير!";
+        </pre>
+        
+        <h2>16. التعامل مع الأحداث</h2>
+        <pre>
+document.getElementById("btn").addEventListener("click", () => {
+    alert("تم الضغط!");
+});
+        </pre>
+        
+        <h2>17. استخدام localStorage</h2>
+        <pre>
+localStorage.setItem("username", "Ali");
+console.log(localStorage.getItem("username"));
+        </pre>
+        
+        <h2>18. استخدام Promise و async/await</h2>
+        <pre>
+async function getData() {
+    let data = await fetchData();
+    console.log(data);
+}
+getData();
+        </pre>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();  // الرجوع إلى الصفحة السابقة
+        }
+    </script>
+    
+</body>
+</html>

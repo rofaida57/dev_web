@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+
+    <title>اساسيات css</title>
+    <style>
+        body {
+            
+            margin: 0;
+            padding: 0;
+            background-color: #dae3eb;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            max-width: 100%;
+            width: 90%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        code {
+            background: rgb(163, 187, 207);
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 5px;
+            font-size: 16px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+        .back-button {
+    background-color: #ff781e;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed; /* لجعل الزر ثابتًا */
+    top: 30px; /* المسافة من أعلى الصفحة */
+    left: 55px; /* المسافة من يسار الصفحة */
+    z-index: 1000; /* تأكد من أن الزر يظهر فوق المحتوى */
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1> : css اساسيات </h1>
+      <button onclick="goBack()" class="back-button">رجوع</button>
+
+        <h2>1. الألوان والخلفيات</h2>
+        <code>color: red; /* لون النص */</code>
+        <code>background-color: blue; /* لون الخلفية */</code>
+        <code>background-image: url('image.jpg'); /* صورة خلفية */</code>
+        <code>background-repeat: no-repeat; /* منع تكرار الخلفية */</code>
+        <code>background-size: cover; /* تغطية الخلفية */</code>
+        
+        <h2>2. الخطوط والنصوص</h2>
+        <code>font-size: 16px; /* حجم الخط */</code>
+        <code>font-family: Arial, sans-serif; /* نوع الخط */</code>
+        <code>font-weight: bold; /* خط عريض */</code>
+        <code>font-style: italic; /* خط مائل */</code>
+        <code>text-align: center; /* محاذاة النص */</code>
+        <code>text-decoration: underline; /* خط تحت النص */</code>
+        <code>text-transform: uppercase; /* تحويل النص إلى أحرف كبيرة */</code>
+        <code>letter-spacing: 2px; /* تباعد الأحرف */</code>
+        <code>line-height: 1.5; /* ارتفاع السطر */</code>
+        
+        <h2>3. الهوامش والتباعد</h2>
+        <code>margin: 10px; /* المسافة الخارجية */</code>
+        <code>margin-top: 20px; /* الهامش العلوي */</code>
+        <code>padding: 10px; /* المسافة الداخلية */</code>
+        
+        <h2>4. الحدود والظلال</h2>
+        <code>border: 2px solid black; /* تحديد الحدود */</code>
+        <code>border-radius: 10px; /* تدوير الزوايا */</code>
+        <code>box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* ظل */</code>
+        
+        <h2>5. التحكم في الأحجام</h2>
+        <code>width: 100px; /* العرض */</code>
+        <code>height: 200px; /* الارتفاع */</code>
+        <code>max-width: 500px; /* الحد الأقصى للعرض */</code>
+        <code>min-height: 100px; /* الحد الأدنى للارتفاع */</code>
+        
+        <h2>6. العرض والتخطيط</h2>
+        <code>display: flex; /* استخدام Flexbox */</code>
+        <code>justify-content: center; /* محاذاة العناصر أفقيًا */</code>
+        <code>align-items: center; /* محاذاة العناصر عموديًا */</code>
+        <code>flex-direction: column; /* تغيير اتجاه العناصر إلى عمودي */</code>
+        <code>gap: 10px; /* تباعد بين العناصر */</code>
+        <code>visibility: hidden; /* إخفاء العنصر */</code>
+        
+        <h2>7. التحولات والأنيميشن</h2>
+        <code>transition: all 0.3s ease-in-out; /* حركة ناعمة */</code>
+        <code>transform: rotate(45deg); /* تدوير العنصر */</code>
+        <code>animation: fadeIn 2s infinite; /* تطبيق أنيميشن مكرر */</code>
+        
+        <h2>8. تحديد المواقع</h2>
+        <code>position: absolute; /* تحديد الموقع */</code>
+        <code>top: 50px; /* المسافة من الأعلى */</code>
+        <code>left: 100px; /* المسافة من اليسار */</code>
+        <code>z-index: 10; /* ترتيب الطبقات */</code>
+        
+        <h2>9. التنسيقات التفاعلية</h2>
+        <code>:hover { background-color: yellow; } /* عند مرور الماوس */</code>
+        <code>:focus { border: 2px solid blue; } /* عند تحديد العنصر */</code>
+        <code>@media (max-width: 600px) { body { background-color: lightgray; } } /* تصميم استجابة */</code>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();  // الرجوع إلى الصفحة السابقة
+        }
+    </script>
+    
+</body>
+</html>

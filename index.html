@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+
+    <title>اساسيات لغات البرمجة</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f4f7f6;
+            height: 100%;
+            position: relative;
+        }
+
+        .wwp {
+            font-size: 8vw;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            text-align: center;
+            font-size: 4vw;
+            margin: 10px;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards 1s;
+            margin: 15px;
+        }
+
+        a.b {
+            color: black;
+            font-size: 5vw;
+            margin: 10px;
+            text-decoration: none;
+            height: 40px;
+            padding: 10px;
+            transition: .5s;
+           
+            animation: slideUp 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        a.b:hover {
+           
+            color: white;
+            background: rgb(116, 144, 170);
+        }
+
+        .books {
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+            height: 139px;
+        }
+
+        img {
+            margin: 30px;
+            width: 15vw;
+            animation: rotateImg 3s ease-in-out infinite;
+            border-radius: 100px
+        }
+
+        .dic {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .wwp {
+                font-size: 12vw;
+            }
+
+            p {
+                font-size: 6vw;
+            }
+
+            a {
+                font-size: 7vw;
+            }
+
+            img {
+                width: 25vw;
+            }
+            footer {
+            background-color: #2c3e50;
+            padding: 20px 0;
+            color: white;
+            text-align: center; /* تعديل النص ليكون في المنتصف */
+            }
+}
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* جعل الأيقونات والنص في العمود */
+    margin: 15px;
+
+        }
+
+        /* Animation definitions */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateImg {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        footer {
+    background-color: #2c3e50;
+    padding: 20px 0;
+    color: white;
+    text-align: left;
+   
+    
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons .h {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #3498db;
+}
+
+.social-icon i {
+    font-size: 32px;
+}
+
+    </style>
+</head>
+<body >
+    <div class="dic">
+    <img src="eee.png" width="80px">
+    <h1 class="wwp" >ملخص لغات البرمجة </h1>
+    </div>
+    <p>اختر ماتريد تعلمه </p>
+<div class="books">
+        <a href="book 01.html" class="b">html</a>
+        <a href="book02.html" class="b">css</a>
+        <a href="book03.html" class="b">js</a>
+    </div>
+    <footer>
+        <div class="social-links">
+            <div class="social-icons">
+               
+                <a href="mailto:club@gmail.com" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/yourprofile" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <h2 class="h">تابعونا على</h2>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
