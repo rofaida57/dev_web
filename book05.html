@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+    <title>أساسيات C</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #dae3eb;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            max-width: 100%;
+            width: 90%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        code {
+            background: rgb(163, 187, 207);
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .back-button {
+            background-color: #ff781e;
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            top: 30px;
+            left: 55px;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1>أساسيات C</h1>
+      <button onclick="goBack()" class="back-button">رجوع</button>
+      
+      <h2>1. طباعة النصوص</h2>
+      <code>#include &lt;stdio.h&gt;
+int main() {
+    printf("مرحبًا بالعالم!\n");
+    return 0;
+}</code>
+      
+      <h2>2. المتغيرات</h2>
+      <code>int age = 25;</code>
+      <code>float pi = 3.14;</code>
+      <code>char name[] = "أحمد";</code>
+      <code>int isAdult = 1; // 1 تعني true</code>
+      
+      <h2>3. العمليات الحسابية</h2>
+      <code>int sum = 10 + 5;</code>
+      <code>int product = 10 * 5;</code>
+      <code>float division = 10.0 / 2;</code>
+      
+      <h2>4. الشروط</h2>
+      <code>if (age > 18) {
+    printf("بالغ\n");
+} else {
+    printf("قاصر\n");
+}</code>
+      
+      <h2>5. الحلقات</h2>
+      <code>for (int i = 0; i < 5; i++) {
+    printf("%d\n", i);
+}</code>
+      <code>while (age < 30) {
+    age++;
+}</code>
+      
+      <h2>6. المصفوفات</h2>
+      <code>int numbers[] = {1, 2, 3, 4, 5};</code>
+      <code>printf("%d\n", numbers[0]); // 1</code>
+      
+      <h2>7. الدوال</h2>
+      <code>int add(int a, int b) {
+    return a + b;
+}</code>
+      
+      <h2>8. التعامل مع النصوص</h2>
+      <code>#include &lt;string.h&gt;
+char text[] = "مرحبًا";
+strtoupper(text); // تحويل النص إلى أحرف كبيرة</code>
+      
+      <h2>9. إنشاء هياكل البيانات</h2>
+      <code>struct Person {
+    char name[50];
+    int age;
+};</code>
+      <code>struct Person person1;
+strcpy(person1.name, "محمد");
+person1.age = 30;</code>
+      
+      <script>
+        function goBack() {
+            window.history.back();
+        }
+      </script>
+    </div>
+</body>
+</html>

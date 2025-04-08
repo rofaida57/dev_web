@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+    <title>أساسيات PHP</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #dae3eb;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            max-width: 100%;
+            width: 90%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        code {
+            background: rgb(163, 187, 207);
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .back-button {
+            background-color: #ff781e;
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            top: 30px;
+            left: 55px;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1>أساسيات PHP</h1>
+      <button onclick="goBack()" class="back-button">رجوع</button>
+      
+      <h2>1. طباعة النصوص</h2>
+      <code>&lt;?php echo "مرحبًا بالعالم!"; ?&gt;</code>
+      
+      <h2>2. المتغيرات</h2>
+      <code>$age = 25;</code>
+      <code>$pi = 3.14;</code>
+      <code>$name = "أحمد";</code>
+      <code>$isAdult = true;</code>
+      
+      <h2>3. العمليات الحسابية</h2>
+      <code>$sum = 10 + 5;</code>
+      <code>$product = 10 * 5;</code>
+      <code>$division = 10 / 2;</code>
+      
+      <h2>4. الشروط</h2>
+      <code>if ($age > 18) {
+    echo "بالغ";
+} else {
+    echo "قاصر";
+}</code>
+      
+      <h2>5. الحلقات</h2>
+      <code>for ($i = 0; $i < 5; $i++) {
+    echo $i;
+}</code>
+      <code>$age = 20;
+while ($age < 30) {
+    $age++;
+}</code>
+      
+      <h2>6. المصفوفات</h2>
+      <code>$numbers = array(1, 2, 3, 4, 5);</code>
+      <code>echo $numbers[0]; // 1</code>
+      
+      <h2>7. الدوال</h2>
+      <code>function add($a, $b) {
+    return $a + $b;
+}</code>
+      
+      <h2>8. التعامل مع النصوص</h2>
+      <code>$text = "مرحبًا";
+echo strlen($text); // طول النص</code>
+      
+      <h2>9. الكائنات والفئات</h2>
+      <code>class Person {
+    public $name;
+    public $age;
+    
+    function __construct($name, $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+}</code>
+      <code>$person1 = new Person("محمد", 30);</code>
+      
+      <script>
+        function goBack() {
+            window.history.back();
+        }
+      </script>
+    </div>
+</body>
+</html>

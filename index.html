@@ -20,12 +20,12 @@
             font-size: 8vw;
             text-align: center;
             animation: fadeIn 2s ease-in-out;
+            margin-bottom: -20px;
         }
 
         p {
             text-align: center;
             font-size: 4vw;
-            margin: 10px;
             opacity: 0;
             animation: fadeIn 3s ease-in-out forwards 1s;
             margin: 15px;
@@ -33,15 +33,16 @@
 
         a.b {
             color: black;
-            font-size: 5vw;
+            font-size: 50px;
             margin: 10px;
             text-decoration: none;
             height: 40px;
             padding: 10px;
             transition: .5s;
-             border: 2px rgb(201, 201, 201) solid;
+           
             animation: slideUp 1s ease-out forwards;
             opacity: 0;
+            border: 2px rgb(201, 201, 201) solid;
         }
 
         a.b:hover {
@@ -54,10 +55,10 @@
             text-align: center;
             width: 100%;
             justify-content: center;
-            height: 139px;
+            height: 100px;
         }
 
-        img {
+        .img {
             margin: 30px;
             width: 15vw;
             animation: rotateImg 3s ease-in-out infinite;
@@ -85,11 +86,12 @@
                 font-size: 7vw;
             }
 
-            img {
+            .img {
                 width: 25vw;
             }
-            
-           footer {
+          
+
+footer {
     background-color: #2c3e50;
     padding: 20px 0;
     color: white;
@@ -98,14 +100,12 @@
     bottom: 0;
     width: 100%;
 }
-
 }
 .social-links {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; /* جعل الأيقونات والنص في العمود */
-    margin: 15px;
 
         }
 
@@ -141,13 +141,16 @@
                 transform: rotate(360deg);
             }
         }
-        footer {
+footer {
     background-color: #2c3e50;
-    padding: 20px 0;
+    padding: 9px 0;
     color: white;
     text-align: left;
-   
-    
+    z-index: 2;
+    bottom: 0px;
+    top: 86%;
+    position: fixed;
+    width: 100%;
 }
 
 .social-links {
@@ -180,19 +183,35 @@
 .social-icon i {
     font-size: 32px;
 }
+#sidenav{
+    width: 210px;
+    height: 100vh;
+    background-color: #2c3e50bb;
+    position: fixed;
+    top: 0;
+    right: 0px;
+    z-index: 2;
+    color: white;
+}
+
 
     </style>
 </head>
 <body >
     <div class="dic">
-    <img src="eee.png" width="80px">
+    <img src="eee.png" width="80px" class="img">
     <h1 class="wwp" >ملخص لغات البرمجة </h1>
     </div>
-    <p>اختر ماتريد تعلمه </p>
-<div class="books">
+    <p>اختر ماتريد تعلمه </p><br>
+    <div class="books">
         <a href="book 01.html" class="b">html</a>
         <a href="book02.html" class="b">css</a>
         <a href="book03.html" class="b">js</a>
+        <a href="book04.html" class="b">java</a>
+        <a href="book05.html" class="b">c</a>
+        <a href="book06.html" class="b">c++</a>
+        <a href="book07.html" class="b">python</a>
+        <a href="book08.html" class="b">phb</a>
     </div>
     <footer>
         <div class="social-links">
@@ -201,13 +220,25 @@
                 <a href="mailto:club@gmail.com" class="social-icon">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="https://github.com/yourprofail" target="_blank" class="social-icon">
+                <a href="https://github.com/yourprofile" target="_blank" class="social-icon">
                     <i class="fab fa-github"></i>
                 </a>
                 <h2 class="h">تابعونا على</h2>
             </div>
         </div>
     </footer>
-    
+    <script>
+          var mb =document.getElementById('menuBtn');
+        var sv =document.getElementById('sidenav');
+        sv.style.right="-259px";
+        mb.onclick=function(){
+            if(sv.style.right=="-259px"){
+                sv.style.right="0";
+            }
+            else{
+                sv.style.right="-259px";
+            }
+        }
+    </script>
 </body>
 </html>

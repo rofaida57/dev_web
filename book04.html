@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+    <title>أساسيات Java</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #dae3eb;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            max-width: 100%;
+            width: 90%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        code {
+            background: rgb(163, 187, 207);
+            padding: 5px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .back-button {
+            background-color: #ff781e;
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            top: 30px;
+            left: 55px;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <h1>أساسيات Java</h1>
+      <button onclick="goBack()" class="back-button">رجوع</button>
+      
+      <h2>1. طباعة النصوص</h2>
+      <code>System.out.println("مرحبًا بالعالم!");</code>
+      
+      <h2>2. المتغيرات</h2>
+      <code>int age = 25;</code>
+      <code>double pi = 3.14;</code>
+      <code>String name = "أحمد";</code>
+      <code>boolean isAdult = true;</code>
+      
+      <h2>3. العمليات الحسابية</h2>
+      <code>int sum = 10 + 5;</code>
+      <code>int product = 10 * 5;</code>
+      <code>double division = 10.0 / 2;</code>
+      
+      <h2>4. الشروط</h2>
+      <code>if (age > 18) { System.out.println("بالغ"); }</code>
+      <code>else { System.out.println("قاصر"); }</code>
+      
+      <h2>5. الحلقات</h2>
+      <code>for (int i = 0; i < 5; i++) { System.out.println(i); }</code>
+      <code>while (age < 30) { age++; }</code>
+      
+      <h2>6. المصفوفات</h2>
+      <code>int[] numbers = {1, 2, 3, 4, 5};</code>
+      <code>System.out.println(numbers[0]); // 1</code>
+      
+      <h2>7. الكائنات</h2>
+      <code>class Person {
+    String name;
+    int age;
+}</code>
+      <code>Person p = new Person();</code>
+      <code>p.name = "أحمد";</code>
+      
+      <h2>8. الدوال</h2>
+      <code>public static int add(int a, int b) {
+    return a + b;
+}</code>
+      
+      <h2>9. التعامل مع النصوص</h2>
+      <code>String text = "مرحبًا".toUpperCase();</code>
+      <code>System.out.println(text); // مرحبًا بحروف كبيرة</code>
+      
+      <h2>10. إنشاء كائنات</h2>
+      <code>Person person = new Person();</code>
+      <code>person.name = "محمد";</code>
+      <code>person.age = 30;</code>
+      
+      <script>
+        function goBack() {
+            window.history.back();
+        }
+      </script>
+    </div>
+</body>
+</html>
