@@ -194,15 +194,125 @@ footer {
     color: white;
 }
 
+@media (max-width: 600px) {
+    .books {
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    height: 100px;
+    margin-top: 50px; /* ✅ أضف هذا */
+}
+
+
+    .wwp {
+        font-size: 10vw;
+        color: #2c3e50;
+        margin-top: 20px;
+    }
+
+    p {
+        font-size: 5vw;
+        margin: 10px 20px;
+        color: #444;
+    }
+
+    .books {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 0;
+        margin-top: 300px;
+    }
+
+    a.b {
+        width: 80%;
+        font-size: 6vw;
+        background-color: #ffffff;
+        color: #2c3e50;
+        text-align: center;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: background 0.3s, color 0.3s;
+    }
+
+    a.b:hover {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .img {
+        width: 30vw;
+        margin: 20px auto;
+        display: block;
+    }
+
+    .dic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 3; /* ✅ حتى لا يغطيه شيء */
+}
+
+
+    footer {
+        background-color: #2c3e50;
+        padding: 15px 0;
+        color: white;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-size: 4vw;
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+    }
+
+    .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-icons {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .social-icon i {
+        font-size: 28px;
+    }
+
+    .h {
+        margin-top: 10px;
+        font-size: 4.5vw;
+    }
+
+    #sidenav {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: -100%;
+        transition: right 0.3s ease;
+        background-color: rgba(44, 62, 80, 0.95);
+        padding-top: 50px;
+        font-size: 6vw;
+    }
+    
+}
 
     </style>
 </head>
 <body >
-    <div class="dic">
-    <img src="eee.png" width="80px" class="img">
-    <h1 class="wwp" >ملخص لغات البرمجة </h1>
-    </div>
-    <p>اختر ماتريد تعلمه </p><br>
+    <header class="dic">
+        <img src="eee.png" class="img">
+        <h1 class="wwp">ملخص لغات البرمجة</h1>
+    </header>
+    <p class="p">اختر ماتريد تعلمه </p><br>
+    
     <div class="books">
         <a href="book 01.html" class="b">html</a>
         <a href="book02.html" class="b">css</a>
