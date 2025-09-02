@@ -1,156 +1,639 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
-
-    <title>اساسيات css</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>أساسيات CSS</title>
     <style>
-        body {
-            
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #dae3eb;
+            box-sizing: border-box;
+        }
+        
+        body {
             font-family: 'Tajawal', sans-serif;
-        }
-        .container {
-            max-width: 100%;
-            width: 90%;
-            margin: 20px auto;
-            background: #fff;
+            margin: 0;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            direction: rtl;
+            padding-top: 80px;
         }
-        h1, h2 {
-            color: #333;
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+            border-radius: 0 0 0 200px;
+            z-index: 0;
+        }
+        
+        h1 {
+            color: var(--primary-color);
             text-align: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
         }
-        code {
-            background: rgb(163, 187, 207);
-            padding: 5px;
-            border-radius: 5px;
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin: 35px 0 20px;
+            font-size: 24px;
+            font-weight: 600;
+            position: relative;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        h2 i {
+            margin-left: 12px;
+            color: var(--secondary-color);
+            font-size: 20px;
+        }
+        
+        .css-card {
+            background-color: #f8f9fa;
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-right: 4px solid var(--secondary-color);
+        }
+        
+        .css-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .css-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
             display: block;
             white-space: pre-wrap;
             word-wrap: break-word;
-            margin: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
             font-size: 16px;
+            line-height: 1.5;
+            direction: ltr;
+            text-align: left;
+            position: relative;
+            overflow-x: auto;
         }
-        @media (max-width: 600px) {
-            .container {
-                width: 95%;
+        
+        .css-code::before {
+            content: 'CSS';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 12px;
+            color: #a0aec0;
+            font-weight: bold;
+        }
+        
+        .css-comment {
+            color: #68d391;
+            font-style: italic;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, var(--accent-color), #c0392b);
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        .back-button i {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 14px 50px 14px 20px;
+            border: none;
+            border-radius: 50px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-size: 16px;
+            font-family: 'Tajawal', sans-serif;
+            text-align: right;
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+        
+        .search-btn {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-btn:hover {
+            color: var(--secondary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .category-section {
+            margin-bottom: 40px;
+        }
+        
+        .empty-result {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            display: none;
+        }
+        
+        .empty-result i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #cbd5e0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
                 padding: 15px;
+                padding-top: 80px;
+            }
+            
+            .container {
+                width: 100%;
+                padding: 20px;
+                border-radius: var(--radius);
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            .css-code {
+                font-size: 14px;
+                padding: 12px;
+            }
+            
+            .back-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .back-button i {
+                font-size: 16px;
             }
         }
-        .back-button {
-    background-color: #ff781e;
-    color: white;
-    font-size: 16px;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: fixed; /* لجعل الزر ثابتًا */
-    top: 30px; /* المسافة من أعلى الصفحة */
-    left: 55px; /* المسافة من يسار الصفحة */
-    z-index: 1000; /* تأكد من أن الزر يظهر فوق المحتوى */
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #2980b9;
-}
-
     </style>
 </head>
 <body>
+    <button onclick="goBack()" class="back-button">
+        <i class="fas fa-arrow-left"></i> رجوع
+    </button>
+    
     <div class="container">
-      <h1> : css اساسيات </h1>
-      <button onclick="goBack()" class="back-button">رجوع</button>
-      <h2>1. الألوان والخلفيات</h2>
-      <code>color: red; /* لون النص */</code>
-      <code>background-color: blue; /* لون الخلفية */</code>
-      <code>background-image: url('image.jpg'); /* صورة خلفية */</code>
-      <code>background-repeat: no-repeat; /* منع تكرار الخلفية */</code>
-      <code>background-size: cover; /* تغطية الخلفية */</code>
-      <code>background-position: center; /* محاذاة الخلفية */</code>
-      <code>background-attachment: fixed; /* جعل الخلفية ثابتة عند التمرير */</code>
-      
-      <h2>2. الخطوط والنصوص</h2>
-      <code>font-size: 16px; /* حجم الخط */</code>
-      <code>font-family: Arial, sans-serif; /* نوع الخط */</code>
-      <code>font-weight: bold; /* خط عريض */</code>
-      <code>font-style: italic; /* خط مائل */</code>
-      <code>text-align: center; /* محاذاة النص */</code>
-      <code>text-decoration: underline; /* خط تحت النص */</code>
-      <code>text-transform: uppercase; /* تحويل النص إلى أحرف كبيرة */</code>
-      <code>letter-spacing: 2px; /* تباعد الأحرف */</code>
-      <code>line-height: 1.5; /* ارتفاع السطر */</code>
-      <code>word-spacing: 5px; /* تباعد الكلمات */</code>
-      
-      <h2>3. الهوامش والتباعد</h2>
-      <code>margin: 10px; /* المسافة الخارجية */</code>
-      <code>margin-top: 20px; /* الهامش العلوي */</code>
-      <code>padding: 10px; /* المسافة الداخلية */</code>
-      
-      <h2>4. الحدود والظلال</h2>
-      <code>border: 2px solid black; /* تحديد الحدود */</code>
-      <code>border-radius: 10px; /* تدوير الزوايا */</code>
-      <code>box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* ظل */</code>
-      
-      <h2>5. التحكم في الأحجام</h2>
-      <code>width: 100px; /* العرض */</code>
-      <code>height: 200px; /* الارتفاع */</code>
-      <code>max-width: 500px; /* الحد الأقصى للعرض */</code>
-      <code>min-height: 100px; /* الحد الأدنى للارتفاع */</code>
-      
-      <h2>6. العرض والتخطيط</h2>
-      <code>display: flex; /* استخدام Flexbox */</code>
-      <code>justify-content: center; /* محاذاة العناصر أفقيًا */</code>
-      <code>align-items: center; /* محاذاة العناصر عموديًا */</code>
-      <code>flex-direction: column; /* تغيير اتجاه العناصر إلى عمودي */</code>
-      <code>gap: 10px; /* تباعد بين العناصر */</code>
-      <code>visibility: hidden; /* إخفاء العنصر */</code>
-      
-      <h2>7. التحولات والأنيميشن</h2>
-      <code>transition: all 0.3s ease-in-out; /* حركة ناعمة */</code>
-      <code>transform: rotate(45deg); /* تدوير العنصر */</code>
-      <code>animation: fadeIn 2s infinite; /* تطبيق أنيميشن مكرر */</code>
-      
-      <h2>8. تحديد المواقع</h2>
-      <code>position: absolute; /* تحديد الموقع */</code>
-      <code>top: 50px; /* المسافة من الأعلى */</code>
-      <code>left: 100px; /* المسافة من اليسار */</code>
-      <code>z-index: 10; /* ترتيب الطبقات */</code>
-      
-      <h2>9. التنسيقات التفاعلية</h2>
-      <code>:hover { background-color: yellow; } /* عند مرور الماوس */</code>
-      <code>:focus { border: 2px solid blue; } /* عند تحديد العنصر */</code>
-      <code>@media (max-width: 600px) { body { background-color: lightgray; } } /* تصميم استجابة */</code>
-      
-      <h2>10. الجداول والقوائم</h2>
-      <code>border-collapse: collapse; /* دمج حدود الجدول */</code>
-      <code>list-style-type: none; /* إزالة نقاط القائمة */</code>
-      
-      <h2>11. الأزرار والتفاعلات</h2>
-      <code>cursor: pointer; /* تغيير شكل المؤشر عند المرور */</code>
-      <code>user-select: none; /* منع تحديد النص */</code>
-      <code>opacity: 0.5; /* شفافية العنصر */</code>
-      
-      <h2>12. التمرير</h2>
-      <code>overflow: hidden; /* إخفاء التمرير */</code>
-      <code>overflow-y: scroll; /* إظهار التمرير العمودي */</code>
-      
-      <h2>13. الشفافية والفلاتر</h2>
-      <code>opacity: 0.7; /* مستوى الشفافية */</code>
-      <code>filter: blur(5px); /* تأثير التمويه */</code>
-      
+        <h1>أساسيات CSS</h1>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن خاصية CSS...">
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <div class="empty-result" id="emptyResult">
+            <i class="fas fa-search"></i>
+            <h3>لا توجد نتائج</h3>
+            <p>جرب البحث بكلمات أخرى</p>
+        </div>
+        
+        <div id="cssContent">
+            <!-- الألوان والخلفيات -->
+            <div class="category-section" data-category="colors">
+                <h2><i class="fas fa-palette"></i> الألوان والخلفيات</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">color: red; <span class="css-comment">/* لون النص */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">background-color: blue; <span class="css-comment">/* لون الخلفية */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">background-image: url('image.jpg'); <span class="css-comment">/* صورة خلفية */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">background-repeat: no-repeat; <span class="css-comment">/* منع تكرار الخلفية */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">background-size: cover; <span class="css-comment">/* تغطية الخلفية */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">background-position: center; <span class="css-comment">/* محاذاة الخلفية */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">background-attachment: fixed; <span class="css-comment">/* جعل الخلفية ثابتة عند التمرير */</span></code>
+                </div>
+            </div>
+            
+            <!-- الخطوط والنصوص -->
+            <div class="category-section" data-category="fonts">
+                <h2><i class="fas fa-font"></i> الخطوط والنصوص</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">font-size: 16px; <span class="css-comment">/* حجم الخط */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">font-family: Arial, sans-serif; <span class="css-comment">/* نوع الخط */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">font-weight: bold; <span class="css-comment">/* خط عريض */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">font-style: italic; <span class="css-comment">/* خط مائل */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">text-align: center; <span class="css-comment">/* محاذاة النص */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">text-decoration: underline; <span class="css-comment">/* خط تحت النص */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">text-transform: uppercase; <span class="css-comment">/* تحويل النص إلى أحرف كبيرة */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">letter-spacing: 2px; <span class="css-comment">/* تباعد الأحرف */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">line-height: 1.5; <span class="css-comment">/* ارتفاع السطر */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">word-spacing: 5px; <span class="css-comment">/* تباعد الكلمات */</span></code>
+                </div>
+            </div>
+            
+            <!-- الهوامش والتباعد -->
+            <div class="category-section" data-category="spacing">
+                <h2><i class="fas fa-arrows-alt-h"></i> الهوامش والتباعد</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">margin: 10px; <span class="css-comment">/* المسافة الخارجية */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">margin-top: 20px; <span class="css-comment">/* الهامش العلوي */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">padding: 10px; <span class="css-comment">/* المسافة الداخلية */</span></code>
+                </div>
+            </div>
+            
+            <!-- الحدود والظلال -->
+            <div class="category-section" data-category="borders">
+                <h2><i class="fas fa-vector-square"></i> الحدود والظلال</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">border: 2px solid black; <span class="css-comment">/* تحديد الحدود */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">border-radius: 10px; <span class="css-comment">/* تدوير الزوايا */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); <span class="css-comment">/* ظل */</span></code>
+                </div>
+            </div>
+            
+            <!-- التحكم في الأحجام -->
+            <div class="category-section" data-category="sizing">
+                <h2><i class="fas fa-expand-arrows-alt"></i> التحكم في الأحجام</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">width: 100px; <span class="css-comment">/* العرض */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">height: 200px; <span class="css-comment">/* الارتفاع */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">max-width: 500px; <span class="css-comment">/* الحد الأقصى للعرض */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">min-height: 100px; <span class="css-comment">/* الحد الأدنى للارتفاع */</span></code>
+                </div>
+            </div>
+            
+            <!-- العرض والتخطيط -->
+            <div class="category-section" data-category="layout">
+                <h2><i class="fas fa-th-large"></i> العرض والتخطيط</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">display: flex; <span class="css-comment">/* استخدام Flexbox */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">justify-content: center; <span class="css-comment">/* محاذاة العناصر أفقيًا */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">align-items: center; <span class="css-comment">/* محاذاة العناصر عموديًا */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">flex-direction: column; <span class="css-comment">/* تغيير اتجاه العناصر إلى عمودي */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">gap: 10px; <span class="css-comment">/* تباعد بين العناصر */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">visibility: hidden; <span class="css-comment">/* إخفاء العنصر */</span></code>
+                </div>
+            </div>
+            
+            <!-- التحولات والأنيميشن -->
+            <div class="category-section" data-category="animations">
+                <h2><i class="fas fa-magic"></i> التحولات والأنيميشن</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">transition: all 0.3s ease-in-out; <span class="css-comment">/* حركة ناعمة */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">transform: rotate(45deg); <span class="css-comment">/* تدوير العنصر */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">animation: fadeIn 2s infinite; <span class="css-comment">/* تطبيق أنيميشن مكرر */</span></code>
+                </div>
+            </div>
+            
+            <!-- تحديد المواقع -->
+            <div class="category-section" data-category="positioning">
+                <h2><i class="fas fa-crosshairs"></i> تحديد المواقع</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">position: absolute; <span class="css-comment">/* تحديد الموقع */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">top: 50px; <span class="css-comment">/* المسافة من الأعلى */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">left: 100px; <span class="css-comment">/* المسافة من اليسار */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">z-index: 10; <span class="css-comment">/* ترتيب الطبقات */</span></code>
+                </div>
+            </div>
+            
+            <!-- التنسيقات التفاعلية -->
+            <div class="category-section" data-category="interactivity">
+                <h2><i class="fas fa-mouse-pointer"></i> التنسيقات التفاعلية</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">:hover { background-color: yellow; } <span class="css-comment">/* عند مرور الماوس */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">:focus { border: 2px solid blue; } <span class="css-comment">/* عند تحديد العنصر */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">@media (max-width: 600px) { body { background-color: lightgray; } } <span class="css-comment">/* تصميم استجابة */</span></code>
+                </div>
+            </div>
+            
+            <!-- الجداول والقوائم -->
+            <div class="category-section" data-category="tables">
+                <h2><i class="fas fa-table"></i> الجداول والقوائم</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">border-collapse: collapse; <span class="css-comment">/* دمج حدود الجدول */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">list-style-type: none; <span class="css-comment">/* إزالة نقاط القائمة */</span></code>
+                </div>
+            </div>
+            
+            <!-- الأزرار والتفاعلات -->
+            <div class="category-section" data-category="buttons">
+                <h2><i class="fas fa-hand-pointer"></i> الأزرار والتفاعلات</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">cursor: pointer; <span class="css-comment">/* تغيير شكل المؤشر عند المرور */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">user-select: none; <span class="css-comment">/* منع تحديد النص */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">opacity: 0.5; <span class="css-comment">/* شفافية العنصر */</span></code>
+                </div>
+            </div>
+            
+            <!-- التمرير -->
+            <div class="category-section" data-category="scrolling">
+                <h2><i class="fas fa-arrows-alt-v"></i> التمرير</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">overflow: hidden; <span class="css-comment">/* إخفاء التمرير */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">overflow-y: scroll; <span class="css-comment">/* إظهار التمرير العمودي */</span></code>
+                </div>
+            </div>
+            
+            <!-- الشفافية والفلاتر -->
+            <div class="category-section" data-category="filters">
+                <h2><i class="fas fa-adjust"></i> الشفافية والفلاتر</h2>
+                
+                <div class="css-card">
+                    <code class="css-code">opacity: 0.7; <span class="css-comment">/* مستوى الشفافية */</span></code>
+                </div>
+                
+                <div class="css-card">
+                    <code class="css-code">filter: blur(5px); <span class="css-comment">/* تأثير التمويه */</span></code>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script>
+        // وظيفة البحث في خصائص CSS
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const cssContent = document.getElementById('cssContent');
+            const categorySections = cssContent.querySelectorAll('.category-section');
+            const emptyResult = document.getElementById('emptyResult');
+            
+            function filterContent() {
+                const searchText = searchInput.value.toLowerCase();
+                let visibleSections = 0;
+                
+                // إظهار/إخفاء الأقسام والبطاقات بناءً على نص البحث
+                categorySections.forEach(section => {
+                    const cards = section.querySelectorAll('.css-card');
+                    let sectionHasVisibleCards = false;
+                    
+                    cards.forEach(card => {
+                        const code = card.textContent.toLowerCase();
+                        if (code.includes(searchText) || searchText === '') {
+                            card.style.display = 'block';
+                            sectionHasVisibleCards = true;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    if (sectionHasVisibleCards || searchText === '') {
+                        section.style.display = 'block';
+                        visibleSections++;
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // إظهار أو إخفاء رسالة عدم وجود نتائج
+                if (visibleSections === 0 && searchText !== '') {
+                    emptyResult.style.display = 'block';
+                    cssContent.style.display = 'none';
+                } else {
+                    emptyResult.style.display = 'none';
+                    cssContent.style.display = 'block';
+                }
+            }
+            
+            // إضافة مستمعي الأحداث للبحث
+            searchInput.addEventListener('keyup', filterContent);
+            searchBtn.addEventListener('click', filterContent);
+        });
+        
+        // وظيفة الرجوع للصفحة السابقة
         function goBack() {
-            window.history.back();  // الرجوع إلى الصفحة السابقة
+            window.history.back();
         }
     </script>
-    
 </body>
 </html>
