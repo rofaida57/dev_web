@@ -127,11 +127,31 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
             border-right: 4px solid var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .java-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), transparent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
         }
         
         .java-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .java-card:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
         
         .java-code {
@@ -266,6 +286,63 @@
             color: #cbd5e0;
         }
         
+        /* تحسينات إضافية */
+        .code-description {
+            color: #4a5568;
+            margin-top: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .code-description i {
+            margin-left: 8px;
+            color: var(--secondary-color);
+            font-size: 12px;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 5px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: var(--transition);
+            opacity: 0;
+        }
+        
+        .java-card:hover .copy-button {
+            opacity: 1;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
+        
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -341,7 +418,9 @@
                 <h2><i class="fas fa-print"></i> طباعة النصوص</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">System.out.println</span>(<span class="java-string">"مرحبًا بالعالم!"</span>);</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> يستخدم لطباعة النصوص وعرضها على الشاشة</div>
                 </div>
             </div>
             
@@ -350,19 +429,27 @@
                 <h2><i class="fas fa-code"></i> المتغيرات</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">int</span> age = <span class="java-string">25</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير رقمي صحيح</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">double</span> pi = <span class="java-string">3.14</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير رقمي عشري</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">String</span> name = <span class="java-string">"أحمد"</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير نصي</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">boolean</span> isAdult = <span class="java-keyword">true</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير منطقي (صواب/خطأ)</div>
                 </div>
             </div>
             
@@ -371,15 +458,21 @@
                 <h2><i class="fas fa-calculator"></i> العمليات الحسابية</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">int</span> sum = <span class="java-string">10</span> + <span class="java-string">5</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> عملية الجمع</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">int</span> product = <span class="java-string">10</span> * <span class="java-string">5</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> عملية الضرب</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">double</span> division = <span class="java-string">10.0</span> / <span class="java-string">2</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> عملية القسمة</div>
                 </div>
             </div>
             
@@ -388,15 +481,19 @@
                 <h2><i class="fas fa-code-branch"></i> الشروط</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">if</span> (age > <span class="java-string">18</span>) { 
     <span class="java-keyword">System.out.println</span>(<span class="java-string">"بالغ"</span>); 
 }</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> شرط إذا كان العمر أكبر من 18</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">else</span> { 
     <span class="java-keyword">System.out.println</span>(<span class="java-string">"قاصر"</span>); 
 }</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> شرط آخر إذا لم يتحقق الشرط الأول</div>
                 </div>
             </div>
             
@@ -405,15 +502,19 @@
                 <h2><i class="fas fa-sync-alt"></i> الحلقات</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">for</span> (<span class="java-keyword">int</span> i = <span class="java-string">0</span>; i < <span class="java-string">5</span>; i++) { 
     <span class="java-keyword">System.out.println</span>(i); 
 }</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> حلقة for لتكرار الكود 5 مرات</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">while</span> (age < <span class="java-string">30</span>) { 
     age++; 
 }</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> حلقة while تستمر طالما العمر أقل من 30</div>
                 </div>
             </div>
             
@@ -422,11 +523,15 @@
                 <h2><i class="fas fa-list"></i> المصفوفات</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">int</span>[] numbers = {<span class="java-string">1</span>, <span class="java-string">2</span>, <span class="java-string">3</span>, <span class="java-string">4</span>, <span class="java-string">5</span>};</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف مصفوفة أرقام</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">System.out.println</span>(numbers[<span class="java-string">0</span>]); <span class="java-comment">// 1</span></code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> الوصول لعنصر في المصفوفة (الفهرس يبدأ من 0)</div>
                 </div>
             </div>
             
@@ -435,18 +540,24 @@
                 <h2><i class="fas fa-cube"></i> الكائنات</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">class</span> Person {
     String name;
     <span class="java-keyword">int</span> age;
 }</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف كلاس Person</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code">Person p = <span class="java-keyword">new</span> Person();</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> إنشاء كائن من كلاس Person</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code">p.name = <span class="java-string">"أحمد"</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعيين قيمة لخاصية name</div>
                 </div>
             </div>
             
@@ -455,9 +566,11 @@
                 <h2><i class="fas fa-cogs"></i> الدوال</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">public static int</span> add(<span class="java-keyword">int</span> a, <span class="java-keyword">int</span> b) {
     <span class="java-keyword">return</span> a + b;
 }</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> دالة تجمع رقمين وترجع الناتج</div>
                 </div>
             </div>
             
@@ -466,11 +579,15 @@
                 <h2><i class="fas fa-font"></i> التعامل مع النصوص</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code">String text = <span class="java-string">"مرحبًا"</span>.toUpperCase();</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تحويل النص إلى أحرف كبيرة</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code"><span class="java-keyword">System.out.println</span>(text); <span class="java-comment">// مرحبًا بحروف كبيرة</span></code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> طباعة النص بعد تحويله</div>
                 </div>
             </div>
             
@@ -479,19 +596,27 @@
                 <h2><i class="fas fa-plus-circle"></i> إنشاء كائنات</h2>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code">Person person = <span class="java-keyword">new</span> Person();</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> إنشاء كائن جديد</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code">person.name = <span class="java-string">"محمد"</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعيين اسم للكائن</div>
                 </div>
                 
                 <div class="java-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
                     <code class="java-code">person.age = <span class="java-string">30</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعيين عمر للكائن</div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div class="toast" id="toast"></div>
     
     <script>
         // وظيفة البحث في أوامر Java
@@ -544,6 +669,30 @@
             searchBtn.addEventListener('click', filterContent);
         });
         
+        // وظيفة نسخ الكود
+        function copyCode(button) {
+            const codeElement = button.nextElementSibling;
+            const codeText = codeElement.textContent;
+            
+            // نسخ النص إلى الحافظة
+            navigator.clipboard.writeText(codeText).then(() => {
+                showToast('تم نسخ الكود بنجاح');
+            }).catch(err => {
+                showToast('فشل نسخ الكود: ' + err);
+            });
+        }
+        
+        // وظيفة عرض الرسائل
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+        
         // وظيفة الرجوع للصفحة السابقة
         function goBack() {
             window.history.back();
@@ -551,4 +700,5 @@
     </script>
 </body>
 </html>
+
 
