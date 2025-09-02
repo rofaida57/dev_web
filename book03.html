@@ -1,196 +1,554 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
-
-    <title>مرجع JavaScript الأساسي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>أساسيات Java</title>
     <style>
-        body { 
-            padding: 20px; 
-            background-color: #f8f9fa;
+        :root {
+            --primary-color: #f89820;
+            --secondary-color: #007396;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
             font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            min-height: 100vh;
+            direction: rtl;
+            padding-top: 80px;
         }
-        h1, h2 {
-            color: #2c3e50;
-            text-align: center;
-        }
-        pre {
-            background:rgb(163, 187, 207);
-            padding: 10px; 
-            border-radius: 5px;
-            font-size: 18px;
-            text-align: left;
-        }
+        
         .container {
-            max-width: 100%;
-            padding: 10px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(248, 152, 32, 0.1), rgba(0, 115, 150, 0.1));
+            border-radius: 0 0 0 200px;
+            z-index: 0;
+        }
+        
+        .java-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .java-logo {
+            width: 80px;
+            height: 80px;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 36px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 115, 150, 0.3);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        h2 {
+            color: var(--dark-color);
+            margin: 35px 0 20px;
+            font-size: 24px;
+            font-weight: 600;
+            position: relative;
+            padding-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        h2 i {
+            margin-left: 12px;
+            color: var(--secondary-color);
+            font-size: 20px;
+        }
+        
+        .java-card {
+            background-color: #f8f9fa;
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-right: 4px solid var(--secondary-color);
+        }
+        
+        .java-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .java-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            direction: ltr;
+            text-align: left;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        .java-code::before {
+            content: 'Java';
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 12px;
+            color: #f89820;
+            font-weight: bold;
+        }
+        
+        .java-comment {
+            color: #68d391;
+            font-style: italic;
+        }
+        
+        .java-keyword {
+            color: #f89820;
+            font-weight: bold;
+        }
+        
+        .java-string {
+            color: #68d391;
+        }
+        
         .back-button {
-    background-color: #ff781e;
-    color: white;
-    font-size: 16px;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: fixed; /* لجعل الزر ثابتًا */
-    top: 20px; /* المسافة من أعلى الصفحة */
-    left: 20px; /* المسافة من يسار الصفحة */
-    z-index: 1000; /* تأكد من أن الزر يظهر فوق المحتوى */
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #2e6285;
-}
-
+            background: linear-gradient(135deg, var(--primary-color), #e67e22);
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(248, 152, 32, 0.3);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(248, 152, 32, 0.4);
+        }
+        
+        .back-button i {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 14px 50px 14px 20px;
+            border: none;
+            border-radius: 50px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            font-size: 16px;
+            font-family: 'Tajawal', sans-serif;
+            text-align: right;
+            outline: none;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+        
+        .search-btn {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-btn:hover {
+            color: var(--secondary-color);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .category-section {
+            margin-bottom: 40px;
+        }
+        
+        .empty-result {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            display: none;
+        }
+        
+        .empty-result i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #cbd5e0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                padding-top: 80px;
+            }
+            
+            .container {
+                width: 100%;
+                padding: 20px;
+                border-radius: var(--radius);
+            }
+            
+            .java-header {
+                flex-direction: column;
+            }
+            
+            .java-logo {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            .java-code {
+                font-size: 14px;
+                padding: 12px;
+            }
+            
+            .back-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .back-button i {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
+    <button onclick="goBack()" class="back-button">
+        <i class="fas fa-arrow-left"></i> رجوع
+    </button>
+    
     <div class="container">
-       <h1> : JavaScript اساسيات </h1>
-       <button onclick="goBack()" class="back-button">رجوع</button>
-
-        <h2>1. طباعة القيم في وحدة التحكم</h2>
-        <pre>
-console.log("Hello, World!");
-        </pre>
+        <div class="java-header">
+            <div class="java-logo">Java</div>
+            <h1>أساسيات Java</h1>
+        </div>
         
-        <h2>2. تعريف المتغيرات</h2>
-        <pre>
-let name = "Ali";
-const PI = 3.14;
-var age = 25;
-        </pre>
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن أمر Java...">
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
         
-        <h2>3. أنواع البيانات الأساسية</h2>
-        <pre>
-let number = 10;
-let text = "JavaScript";
-let isTrue = true;
-let list = [1, 2, 3];
-let person = { name: "Ali", age: 25 };
-let nothing = null;
-let unknown;
-        </pre>
+        <div class="empty-result" id="emptyResult">
+            <i class="fas fa-search"></i>
+            <h3>لا توجد نتائج</h3>
+            <p>جرب البحث بكلمات أخرى</p>
+        </div>
         
-        <h2>4. الشروط (if - else)</h2>
-        <pre>
-if (score >= 90) {
-    console.log("ممتاز");
-} else if (score >= 70) {
-    console.log("جيد");
-} else {
-    console.log("ضعيف");
-}
-        </pre>
-        
-        <h2>5. الحلقات التكرارية</h2>
-        <pre>
-for (let i = 0; i < 5; i++) {
-    console.log(i);
-}
-        </pre>
-        
-        <h2>6. إنشاء دالة</h2>
-        <pre>
-function greet(name) {
-    return "مرحبًا " + name;
-}
-        </pre>
-        
-        <h2>7. استخدام الدوال السهمية</h2>
-        <pre>
-const sum = (a, b) => a + b;
-        </pre>
-        
-        <h2>8. التعامل مع المصفوفات</h2>
-        <pre>
-numbers.forEach(num => console.log(num));
-let doubled = numbers.map(num => num * 2);
-        </pre>
-        
-        <h2>9. التعامل مع الكائنات</h2>
-        <pre>
-let person = {
-    name: "Ali",
-    age: 25,
-    greet() {
-        console.log("مرحبًا، اسمي " + this.name);
-    }
-};
-        </pre>
-        
-        <h2>10. التحقق من القيم</h2>
-        <pre>
-console.log(5 == "5");  // true
-console.log(5 === "5"); // false
-        </pre>
-        
-        <h2>11. التعامل مع الوقت والتاريخ</h2>
-        <pre>
-let now = new Date();
-console.log(now.toLocaleString());
-        </pre>
-        
-        <h2>12. استخدام setTimeout و setInterval</h2>
-        <pre>
-setTimeout(() => console.log("تم التنفيذ"), 2000);
-setInterval(() => console.log("تكرار"), 1000);
-        </pre>
-        
-        <h2>13. استخدام try...catch</h2>
-        <pre>
-try {
-    let result = x / 0;
-} catch (error) {
-    console.log("حدث خطأ: " + error.message);
-}
-        </pre>
-        
-        <h2>14. جلب بيانات من API</h2>
-        <pre>
-fetch("https://jsonplaceholder.typicode.com/posts/1")
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log("خطأ: " + error));
-        </pre>
-        
-        <h2>15. التفاعل مع HTML باستخدام DOM</h2>
-        <pre>
-document.getElementById("myElement").innerText = "تم التغيير!";
-        </pre>
-        
-        <h2>16. التعامل مع الأحداث</h2>
-        <pre>
-document.getElementById("btn").addEventListener("click", () => {
-    alert("تم الضغط!");
-});
-        </pre>
-        
-        <h2>17. استخدام localStorage</h2>
-        <pre>
-localStorage.setItem("username", "Ali");
-console.log(localStorage.getItem("username"));
-        </pre>
-        
-        <h2>18. استخدام Promise و async/await</h2>
-        <pre>
-async function getData() {
-    let data = await fetchData();
-    console.log(data);
-}
-getData();
-        </pre>
+        <div id="javaContent">
+            <!-- طباعة النصوص -->
+            <div class="category-section" data-category="print">
+                <h2><i class="fas fa-print"></i> طباعة النصوص</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">System.out.println</span>(<span class="java-string">"مرحبًا بالعالم!"</span>);</code>
+                </div>
+            </div>
+            
+            <!-- المتغيرات -->
+            <div class="category-section" data-category="variables">
+                <h2><i class="fas fa-code"></i> المتغيرات</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">int</span> age = <span class="java-string">25</span>;</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">double</span> pi = <span class="java-string">3.14</span>;</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">String</span> name = <span class="java-string">"أحمد"</span>;</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">boolean</span> isAdult = <span class="java-keyword">true</span>;</code>
+                </div>
+            </div>
+            
+            <!-- العمليات الحسابية -->
+            <div class="category-section" data-category="operations">
+                <h2><i class="fas fa-calculator"></i> العمليات الحسابية</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">int</span> sum = <span class="java-string">10</span> + <span class="java-string">5</span>;</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">int</span> product = <span class="java-string">10</span> * <span class="java-string">5</span>;</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">double</span> division = <span class="java-string">10.0</span> / <span class="java-string">2</span>;</code>
+                </div>
+            </div>
+            
+            <!-- الشروط -->
+            <div class="category-section" data-category="conditions">
+                <h2><i class="fas fa-code-branch"></i> الشروط</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">if</span> (age > <span class="java-string">18</span>) { 
+    <span class="java-keyword">System.out.println</span>(<span class="java-string">"بالغ"</span>); 
+}</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">else</span> { 
+    <span class="java-keyword">System.out.println</span>(<span class="java-string">"قاصر"</span>); 
+}</code>
+                </div>
+            </div>
+            
+            <!-- الحلقات -->
+            <div class="category-section" data-category="loops">
+                <h2><i class="fas fa-sync-alt"></i> الحلقات</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">for</span> (<span class="java-keyword">int</span> i = <span class="java-string">0</span>; i < <span class="java-string">5</span>; i++) { 
+    <span class="java-keyword">System.out.println</span>(i); 
+}</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">while</span> (age < <span class="java-string">30</span>) { 
+    age++; 
+}</code>
+                </div>
+            </div>
+            
+            <!-- المصفوفات -->
+            <div class="category-section" data-category="arrays">
+                <h2><i class="fas fa-list"></i> المصفوفات</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">int</span>[] numbers = {<span class="java-string">1</span>, <span class="java-string">2</span>, <span class="java-string">3</span>, <span class="java-string">4</span>, <span class="java-string">5</span>};</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">System.out.println</span>(numbers[<span class="java-string">0</span>]); <span class="java-comment">// 1</span></code>
+                </div>
+            </div>
+            
+            <!-- الكائنات -->
+            <div class="category-section" data-category="objects">
+                <h2><i class="fas fa-cube"></i> الكائنات</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">class</span> Person {
+    String name;
+    <span class="java-keyword">int</span> age;
+}</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code">Person p = <span class="java-keyword">new</span> Person();</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code">p.name = <span class="java-string">"أحمد"</span>;</code>
+                </div>
+            </div>
+            
+            <!-- الدوال -->
+            <div class="category-section" data-category="functions">
+                <h2><i class="fas fa-cogs"></i> الدوال</h2>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">public static int</span> add(<span class="java-keyword">int</span> a, <span class="java-keyword">int</span> b) {
+    <span class="java-keyword">return</span> a + b;
+}</code>
+                </div>
+            </div>
+            
+            <!-- التعامل مع النصوص -->
+            <div class="category-section" data-category="strings">
+                <h2><i class="fas fa-font"></i> التعامل مع النصوص</h2>
+                
+                <div class="java-card">
+                    <code class="java-code">String text = <span class="java-string">"مرحبًا"</span>.toUpperCase();</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code"><span class="java-keyword">System.out.println</span>(text); <span class="java-comment">// مرحبًا بحروف كبيرة</span></code>
+                </div>
+            </div>
+            
+            <!-- إنشاء كائنات -->
+            <div class="category-section" data-category="creation">
+                <h2><i class="fas fa-plus-circle"></i> إنشاء كائنات</h2>
+                
+                <div class="java-card">
+                    <code class="java-code">Person person = <span class="java-keyword">new</span> Person();</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code">person.name = <span class="java-string">"محمد"</span>;</code>
+                </div>
+                
+                <div class="java-card">
+                    <code class="java-code">person.age = <span class="java-string">30</span>;</code>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <script>
+        // وظيفة البحث في أوامر Java
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const javaContent = document.getElementById('javaContent');
+            const categorySections = javaContent.querySelectorAll('.category-section');
+            const emptyResult = document.getElementById('emptyResult');
+            
+            function filterContent() {
+                const searchText = searchInput.value.toLowerCase();
+                let visibleSections = 0;
+                
+                // إظهار/إخفاء الأقسام والبطاقات بناءً على نص البحث
+                categorySections.forEach(section => {
+                    const cards = section.querySelectorAll('.java-card');
+                    let sectionHasVisibleCards = false;
+                    
+                    cards.forEach(card => {
+                        const code = card.textContent.toLowerCase();
+                        if (code.includes(searchText) || searchText === '') {
+                            card.style.display = 'block';
+                            sectionHasVisibleCards = true;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    if (sectionHasVisibleCards || searchText === '') {
+                        section.style.display = 'block';
+                        visibleSections++;
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // إظهار أو إخفاء رسالة عدم وجود نتائج
+                if (visibleSections === 0 && searchText !== '') {
+                    emptyResult.style.display = 'block';
+                    javaContent.style.display = 'none';
+                } else {
+                    emptyResult.style.display = 'none';
+                    javaContent.style.display = 'block';
+                }
+            }
+            
+            // إضافة مستمعي الأحداث للبحث
+            searchInput.addEventListener('keyup', filterContent);
+            searchBtn.addEventListener('click', filterContent);
+        });
+        
+        // وظيفة الرجوع للصفحة السابقة
         function goBack() {
-            window.history.back();  // الرجوع إلى الصفحة السابقة
+            window.history.back();
         }
     </script>
-    
 </body>
 </html>
+
