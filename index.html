@@ -1,360 +1,1025 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ملخص لغات البرمجة">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-icon.png">
 
-
-    <title>اساسيات لغات البرمجة</title>
+    <title>ملخص لغات البرمجة</title>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
             font-family: 'Tajawal', sans-serif;
             background-color: #f4f7f6;
-            height: 100%;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .app-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            padding-bottom: 80px; /* مساحة للشريط السفلي */
+        }
+        
+        .app-header {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .app-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: rotateImg 4s ease-in-out infinite;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .app-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .app-subtitle {
+            font-size: 18px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .search-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 25px;
             position: relative;
         }
-
-        .wwp {
-            font-size: 8vw;
-            text-align: center;
-            animation: fadeIn 2s ease-in-out;
-            margin-bottom: -20px;
-        }
-
-        p {
-            text-align: center;
-            font-size: 4vw;
-            opacity: 0;
-            animation: fadeIn 3s ease-in-out forwards 1s;
-            margin: 15px;
-        }
-
-        a.b {
-            color: black;
-            font-size: 50px;
-            margin: 10px;
-            text-decoration: none;
-            height: 40px;
-            padding: 10px;
-            transition: .5s;
-           
-            animation: slideUp 1s ease-out forwards;
-            opacity: 0;
-            border: 2px rgb(201, 201, 201) solid;
-            border-radius: 40%;
-        }
-
-        a.b:hover {
-           
-            color: white;
-            background: rgb(116, 144, 170);
-        }
-
-        .books {
-            text-align: center;
+        
+        .search-input {
             width: 100%;
-            justify-content: center;
-            height: 100px;
+            padding: 12px 45px 12px 15px;
+            border: none;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: var(--shadow);
+            font-size: 16px;
+            font-family: 'Tajawal', sans-serif;
+            text-align: right;
+            outline: none;
         }
-
-        .img {
-            margin: 30px;
-            width: 15vw;
-            animation: rotateImg 3s ease-in-out infinite;
-            border-radius: 100px
+        
+        .search-btn {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 18px;
+            cursor: pointer;
         }
-
-        .dic {
+        
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .language-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: slideUp 0.5s ease-out forwards;
+            opacity: 0;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            min-height: 130px;
+            position: relative;
+        }
+        
+        .language-card:nth-child(1) { animation-delay: 0.1s; }
+        .language-card:nth-child(2) { animation-delay: 0.2s; }
+        .language-card:nth-child(3) { animation-delay: 0.3s; }
+        .language-card:nth-child(4) { animation-delay: 0.4s; }
+        .language-card:nth-child(5) { animation-delay: 0.5s; }
+        .language-card:nth-child(6) { animation-delay: 0.6s; }
+        .language-card:nth-child(7) { animation-delay: 0.7s; }
+        .language-card:nth-child(8) { animation-delay: 0.8s; }
+        
+        .language-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .language-card:active {
+            transform: scale(0.95);
+        }
+        
+        .language-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .language-name {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .favorite-btn {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .favorite-btn.active {
+            color: #e74c3c;
+        }
+        
+        /* شريط التنقل السفلي */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #7f8c8d;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            color: var(--secondary-color);
+        }
+        
+        .nav-item i {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        /* قائمة الجانبية */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .side-menu.active {
+            right: 0;
+        }
+        
+        .menu-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 15px;
+        }
+        
+        .menu-header h2 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .menu-items {
+            padding: 15px 0;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+        
+        .menu-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .menu-item i {
+            margin-left: 15px;
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* زر القائمة */
+        /* زر القائمة */
+.menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}
+        
+        /* رسائل التطبيق */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
+        
+        /* صفحة التحميل */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.5s;
+        }
+        
+        .splash-screen.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .splash-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .splash-title {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        /* صفحة البحث */
+        .search-page {
+            display: none;
+            padding: 20px;
+            padding-top: 70px;
+        }
+        
+        .search-page.active {
+            display: block;
+        }
+        
+        .search-results {
             margin-top: 20px;
         }
-
-        @media (max-width: 600px) {
-            .wwp {
-                font-size: 12vw;
-            }
-
-            p {
-                font-size: 6vw;
-            }
-
-            a {
-                font-size: 7vw;
-            }
-
-            .img {
-                width: 25vw;
-            }
-          
-
-footer {
-    background-color: #2c3e50;
-    padding: 20px 0;
-    color: white;
-    text-align: center; /* تعديل النص ليكون في المنتصف */
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-}
-.social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; /* جعل الأيقونات والنص في العمود */
-
+        
+        .result-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
         }
-
+        
+        .result-icon {
+            font-size: 24px;
+            margin-left: 15px;
+            color: var(--primary-color);
+        }
+        
+        .result-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .result-info p {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin: 0;
+        }
+        
+        /* صفحة المفضلة */
+        .favorites-page {
+            display: none;
+            padding: 20px;
+            padding-top: 70px;
+        }
+        
+        .favorites-page.active {
+            display: block;
+        }
+        
+        .empty-favorites {
+            text-align: center;
+            padding: 40px 20px;
+            color: #7f8c8d;
+        }
+        
+        .empty-favorites i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
         /* Animation definitions */
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
-
+        
         @keyframes slideUp {
-            0% {
-                transform: translateY(50px);
+            0% { 
+                transform: translateY(30px);
                 opacity: 0;
             }
-            100% {
+            100% { 
                 transform: translateY(0);
                 opacity: 1;
             }
         }
-
+        
         @keyframes rotateImg {
-            0% {
-                transform: rotate(0deg);
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Media queries for different screen sizes */
+        @media (max-width: 480px) {
+            .app-title {
+                font-size: 24px;
             }
-            50% {
-                transform: rotate(180deg);
+            
+            .app-subtitle {
+                font-size: 16px;
             }
-            100% {
-                transform: rotate(360deg);
+            
+            .languages-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+            }
+            
+            .language-card {
+                min-height: 110px;
+                padding: 15px 10px;
+            }
+            
+            .language-icon {
+                font-size: 28px;
+            }
+            
+            .language-name {
+                font-size: 16px;
             }
         }
-footer {
-    background-color: #2c3e50;
-    padding: 9px 0;
-    color: white;
-    text-align: left;
-    z-index: 2;
-    bottom: 0px;
-    top: 86%;
-    position: fixed;
-    width: 100%;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 15px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icons .h {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.social-icon {
-    color: white;
-    font-size: 24px;
-    text-decoration: none;
-}
-
-.social-icon:hover {
-    color: #3498db;
-}
-
-.social-icon i {
-    font-size: 32px;
-}
-#sidenav{
-    width: 210px;
-    height: 100vh;
-    background-color: #2c3e50bb;
-    position: fixed;
-    top: 0;
-    right: 0px;
-    z-index: 2;
-    color: white;
-}
-
-@media (max-width: 600px) {
-    .books {
-    text-align: center;
-    width: 100%;
-    justify-content: center;
-    height: 100px;
-    margin-top: 50px; /* ✅ أضف هذا */
-}
-
-
-    .wwp {
-        font-size: 10vw;
-        color: #2c3e50;
-        margin-top: 20px;
-    }
-
-    p {
-        font-size: 5vw;
-        margin: 10px 20px;
-        color: #444;
-    }
-
-    .books {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 10px 0;
-        margin-top: 300px;
-    }
-
-    a.b {
-        width: 80%;
-        font-size: 6vw;
-        background-color: #ffffff;
-        color: #2c3e50;
-        text-align: center;
-        padding: 12px;
-        border-radius: 12px;
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        transition: background 0.3s, color 0.3s;
-    }
-
-    a.b:hover {
-        background-color: #3498db;
-        color: white;
-    }
-
-    .img {
-        width: 30vw;
-        margin: 20px auto;
-        display: block;
-    }
-
-    .dic {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    position: relative;
-    z-index: 3; /* ✅ حتى لا يغطيه شيء */
-}
-
-
-    footer {
-        background-color: #2c3e50;
-        padding: 15px 0;
-        color: white;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        font-size: 4vw;
-        box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-    }
-
-    .social-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .social-icons {
-        flex-direction: row;
-        gap: 20px;
-    }
-
-    .social-icon i {
-        font-size: 28px;
-    }
-
-    .h {
-        margin-top: 10px;
-        font-size: 4.5vw;
-    }
-
-    #sidenav {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: -100%;
-        transition: right 0.3s ease;
-        background-color: rgba(44, 62, 80, 0.95);
-        padding-top: 50px;
-        font-size: 6vw;
-    }
-    
-}
-
+        
+        @media (max-width: 360px) {
+            .languages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
-<body >
-    <header class="dic">
-        <img src="eee.png" class="img">
-        <h1 class="wwp">ملخص لغات البرمجة</h1>
-    </header>
-    <p class="p">اختر ماتريد تعلمه </p><br>
-    
-    <div class="books">
-        <a href="book 01.html" class="b">html</a>
-        <a href="book02.html" class="b">css</a>
-        <a href="book03.html" class="b">js</a>
-        <a href="book04.html" class="b">java</a>
-        <a href="book05.html" class="b">c</a>
-        <a href="book06.html" class="b">c++</a>
-        <a href="book07.html" class="b">python</a>
-        <a href="book08.html" class="b">phb</a>
+<body>
+    <!-- شاشة البداية -->
+    <div class="splash-screen" id="splashScreen">
+        <img src="eee.png" alt="شعار التطبيق" class="splash-logo">
+        <h1 class="splash-title">ملخص لغات البرمجة</h1>
     </div>
-    <footer>
-        <div class="social-links">
-            <div class="social-icons">
-               
-                <a href="mailto:club@gmail.com" class="social-icon">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://github.com/yourprofile" target="_blank" class="social-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-                <h2 class="h">تابعونا على</h2>
+    
+    <!-- زر القائمة -->
+    <button id="menuBtn" class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- طبقة القائمة -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- القائمة الجانبية -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <img src="eee.png" alt="شعار التطبيق" class="splash-logo">
+            <h2>ملخص لغات البرمجة</h2>
+        </div>
+        <div class="menu-items">
+            <a href="#" class="menu-item" data-page="home">
+                <i class="fas fa-home"></i>
+                <span>الصفحة الرئيسية</span>
+            </a>
+            <a href="#" class="menu-item" data-page="favorites">
+                <i class="fas fa-star"></i>
+                <span>المفضلة</span>
+            </a>
+            <a href="#" class="menu-item" data-page="progress">
+                <i class="fas fa-chart-line"></i>
+                <span>مستوى التقدم</span>
+            </a>
+            <a href="#" class="menu-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </a>
+            <a href="#" class="menu-item" data-page="about">
+                <i class="fas fa-info-circle"></i>
+                <span>حول التطبيق</span>
+            </a>
+            <a href="#" class="menu-item" data-page="contact">
+                <i class="fas fa-envelope"></i>
+                <span>اتصل بنا</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- الصفحة الرئيسية -->
+    <div class="app-container" id="homePage">
+        <header class="app-header">
+            <img src="eee.png" alt="شعار التطبيق" class="splash-logo">
+            <h1 class="app-title">ملخص لغات البرمجة</h1>
+            <p class="app-subtitle">اختر لغة البرمجة التي تريد تعلمها</p>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن لغة برمجة...">
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <div class="languages-grid">
+            <a href="book 01.html" class="language-card" data-language="HTML">
+    <button class="favorite-btn">
+        <i class="far fa-heart"></i>
+    </button>
+    <i class="fab fa-html5 language-icon" style="color: #e34c26;"></i>
+    <span class="language-name">HTML</span>
+</a>
+            <div class="language-card" data-language="CSS">
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <i class="fab fa-css3-alt language-icon" style="color: #1572b6;"></i>
+                <span class="language-name">CSS</span>
+            </div>
+            <div class="language-card" data-language="JavaScript">
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <i class="fab fa-js-square language-icon" style="color: #f7df1e;"></i>
+                <span class="language-name">JavaScript</span>
+            </div>
+            <div class="language-card" data-language="Java">
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <i class="fab fa-java language-icon" style="color: #007396;"></i>
+                <span class="language-name">Java</span>
+            </div>
+            <div class="language-card" data-language="C">
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <i class="fas fa-code language-icon" style="color: #00599c;"></i>
+                <span class="language-name">C</span>
+            </div>
+            <div class="language-card" data-language="C++">
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <i class="fas fa-code language-icon" style="color: #00599c;"></i>
+                <span class="language-name">C++</span>
+            </div>
+            <div class="language-card" data-language="Python">
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <i class="fab fa-python language-icon" style="color: #3776ab;"></i>
+                <span class="language-name">Python</span>
+            </div>
+            <div class="language-card" data-language="PHP">
+                <button class="favorite-btn">
+                    <i class="far fa-heart"></i>
+                </button>
+                <i class="fab fa-php language-icon" style="color: #777bb4;"></i>
+                <span class="language-name">PHP</span>
             </div>
         </div>
-    </footer>
+    </div>
+    
+    <!-- صفحة البحث -->
+    <div class="search-page" id="searchPage">
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchPageInput" placeholder="ابحث عن لغة برمجة...">
+            <button class="search-btn" id="searchPageBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        
+        <div class="search-results" id="searchResults">
+            <!-- نتائج البحث ستظهر هنا -->
+        </div>
+    </div>
+    
+    <!-- صفحة المفضلة -->
+    <div class="favorites-page" id="favoritesPage">
+        <h2 style="margin-bottom: 20px; text-align: right;">لغات البرمجة المفضلة</h2>
+        <div id="favoritesContainer">
+            <div class="empty-favorites">
+                <i class="far fa-star"></i>
+                <h3>لا توجد لغات مفضلة</h3>
+                <p>أضف لغات البرمجة إلى المفضلة بالضغط على أيقونة القلب</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- شريط التنقل السفلي -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="#" class="nav-item" data-page="search">
+            <i class="fas fa-search"></i>
+            <span>بحث</span>
+        </a>
+        <a href="#" class="nav-item" data-page="favorites">
+            <i class="fas fa-star"></i>
+            <span>المفضلة</span>
+        </a>
+    </nav>
+    
+    <!-- رسائل التطبيق -->
+    <div class="toast" id="toast"></div>
+    
     <script>
-          var mb =document.getElementById('menuBtn');
-        var sv =document.getElementById('sidenav');
-        sv.style.right="-259px";
-        mb.onclick=function(){
-            if(sv.style.right=="-259px"){
-                sv.style.right="0";
+        document.addEventListener('DOMContentLoaded', function() {
+            // عناصر DOM
+            const menuBtn = document.getElementById('menuBtn');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const splashScreen = document.getElementById('splashScreen');
+            const toast = document.getElementById('toast');
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const searchPageInput = document.getElementById('searchPageInput');
+            const searchPageBtn = document.getElementById('searchPageBtn');
+            const searchResults = document.getElementById('searchResults');
+            const favoritesContainer = document.getElementById('favoritesContainer');
+            
+            // الصفحات
+            const homePage = document.getElementById('homePage');
+            const searchPage = document.getElementById('searchPage');
+            const favoritesPage = document.getElementById('favoritesPage');
+            
+            // بيانات لغات البرمجة
+            const programmingLanguages = [
+                { name: 'HTML', icon: 'fab fa-html5', color: '#e34c26', description: 'لغة ترميز النصوص التشعبية' },
+                { name: 'CSS', icon: 'fab fa-css3-alt', color: '#1572b6', description: 'لغة تنسيق صفحات الويب' },
+                { name: 'JavaScript', icon: 'fab fa-js-square', color: '#f7df1e', description: 'لغة برمجة ويب تفاعلية' },
+                { name: 'Java', icon: 'fab fa-java', color: '#007396', description: 'لغة برمجة كائنية التوجه' },
+                { name: 'C', icon: 'fas fa-code', color: '#00599c', description: 'لغة برمجة إجرائية' },
+                { name: 'C++', icon: 'fas fa-code', color: '#00599c', description: 'لغة برمجة متعددة الأغراض' },
+                { name: 'Python', icon: 'fab fa-python', color: '#3776ab', description: 'لغة برمجة عالية المستوى' },
+                { name: 'PHP', icon: 'fab fa-php', color: '#777bb4', description: 'لغة برمجة من جانب الخادم' }
+            ];
+            
+            // إخفاء شاشة البداية بعد تحميل التطبيق
+            setTimeout(() => {
+                splashScreen.classList.add('hide');
+            }, 1500);
+            
+            // وظيفة القائمة الجانبية
+            menuBtn.addEventListener('click', function() {
+                sideMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+            });
+            
+            // إغلاق القائمة عند النقر على الطبقة الشفافة
+            menuOverlay.addEventListener('click', function() {
+                sideMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+            
+            // وظيفة عرض الرسائل
+            function showToast(message, duration = 3000) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, duration);
             }
-            else{
-                sv.style.right="-259px";
+            
+            // تبديل الصفحات
+            function showPage(pageName) {
+                // إخفاء جميع الصفحات
+                homePage.style.display = 'none';
+                searchPage.style.display = 'none';
+                favoritesPage.style.display = 'none';
+                
+                // إزالة الفئة النشطة من جميع عناصر التنقل
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // إظهار الصفحة المطلوبة
+                switch(pageName) {
+                    case 'home':
+                        homePage.style.display = 'flex';
+                        break;
+                    case 'search':
+                        searchPage.style.display = 'block';
+                        searchPageInput.focus();
+                        break;
+                    case 'favorites':
+                        favoritesPage.style.display = 'block';
+                        loadFavorites();
+                        break;
+                }
+                
+                // إضافة الفئة النشطة لعنصر التنقل المحدد
+                document.querySelector(`.nav-item[data-page="${pageName}"]`).classList.add('active');
             }
-        }
-        if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
-  }
+            
+            // مستمعو أحداث التنقل السفلي
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageName = this.getAttribute('data-page');
+                    showPage(pageName);
+                });
+            });
+            
+            // مستمعو أحداث القائمة الجانبية
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageName = this.getAttribute('data-page');
+                    
+                    // إغلاق القائمة
+                    sideMenu.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    
+                    // عرض الصفحة المطلوبة
+                    if (pageName === 'home' || pageName === 'favorites') {
+                        showPage(pageName);
+                    } else {
+                        showToast(`صفحة ${this.querySelector('span').textContent} قيد التطوير`);
+                    }
+                });
+            });
+            
+            // وظيفة البحث
+            function performSearch(query) {
+                if (!query.trim()) {
+                    searchResults.innerHTML = '<div class="empty-favorites"><i class="fas fa-search"></i><h3>أدخل كلمة للبحث</h3></div>';
+                    return;
+                }
+                
+                const results = programmingLanguages.filter(lang => 
+                    lang.name.toLowerCase().includes(query.toLowerCase()) ||
+                    lang.description.toLowerCase().includes(query.toLowerCase())
+                );
+                
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<div class="empty-favorites"><i class="fas fa-search"></i><h3>لا توجد نتائج</h3></div>';
+                    return;
+                }
+                
+                searchResults.innerHTML = results.map(lang => `
+                    <div class="result-item" data-language="${lang.name}">
+                        <i class="${lang.icon} result-icon" style="color: ${lang.color};"></i>
+                        <div class="result-info">
+                            <h3>${lang.name}</h3>
+                            <p>${lang.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // إضافة مستمعي الأحداث لنتائج البحث
+                document.querySelectorAll('.result-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const language = this.getAttribute('data-language');
+                        openLanguagePage(language);
+                    });
+                });
+            }
+            
+            // مستمعو أحداث البحث
+            searchBtn.addEventListener('click', function() {
+                performSearch(searchInput.value);
+                showPage('search');
+                searchPageInput.value = searchInput.value;
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(this.value);
+                    showPage('search');
+                    searchPageInput.value = this.value;
+                }
+            });
+            
+            searchPageBtn.addEventListener('click', function() {
+                performSearch(searchPageInput.value);
+            });
+            
+            searchPageInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch(this.value);
+                }
+            });
+            
+            // وظيفة المفضلة
+            function toggleFavorite(languageName, button) {
+                let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                
+                const icon = button.querySelector('i');
+                
+                if (favorites.includes(languageName)) {
+                    // إزالة من المفضلة
+                    favorites = favorites.filter(fav => fav !== languageName);
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    button.classList.remove('active');
+                    showToast(`تم إزالة ${languageName} من المفضلة`);
+                } else {
+                    // إضافة إلى المفضلة
+                    favorites.push(languageName);
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    button.classList.add('active');
+                    showToast(`تمت إضافة ${languageName} إلى المفضلة`);
+                }
+                
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+            }
+            
+            // تحميل المفضلة
+            function loadFavorites() {
+                const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                
+                if (favorites.length === 0) {
+                    favoritesContainer.innerHTML = `
+                        <div class="empty-favorites">
+                            <i class="far fa-star"></i>
+                            <h3>لا توجد لغات مفضلة</h3>
+                            <p>أضف لغات البرمجة إلى المفضلة بالضغط على أيقونة القلب</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const favoriteLanguages = programmingLanguages.filter(lang => 
+                    favorites.includes(lang.name)
+                );
+                
+                favoritesContainer.innerHTML = favoriteLanguages.map(lang => `
+                    <div class="result-item" data-language="${lang.name}">
+                        <i class="${lang.icon} result-icon" style="color: ${lang.color};"></i>
+                        <div class="result-info">
+                            <h3>${lang.name}</h3>
+                            <p>${lang.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // إضافة مستمعي الأحداث لعناصر المفضلة
+                document.querySelectorAll('#favoritesContainer .result-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const language = this.getAttribute('data-language');
+                        openLanguagePage(language);
+                    });
+                });
+            }
+            
+            // مستمعو أحداث أزرار المفضلة
+            document.querySelectorAll('.favorite-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // منع انتقال الحدث للعنصر الأصل
+                    const languageCard = this.closest('.language-card');
+                    const languageName = languageCard.getAttribute('data-language');
+                    toggleFavorite(languageName, this);
+                });
+            });
+            
+            // فتح صفحة اللغة
+            function openLanguagePage(languageName) {
+                showToast(`جاري فتح ${languageName}...`);
+                
+                // تحديد رابط الصفحة بناءً على اسم اللغة
+                let pageUrl = '';
+                switch(languageName) {
+                    case 'HTML':
+                        pageUrl = 'book01.html';
+                        break;
+                    case 'CSS':
+                        pageUrl = 'book02.html';
+                        break;
+                    case 'JavaScript':
+                        pageUrl = 'book03.html';
+                        break;
+                    case 'Java':
+                        pageUrl = 'book04.html';
+                        break;
+                    case 'C':
+                        pageUrl = 'book05.html';
+                        break;
+                    case 'C++':
+                        pageUrl = 'book06.html';
+                        break;
+                    case 'Python':
+                        pageUrl = 'book07.html';
+                        break;
+                    case 'PHP':
+                        pageUrl = 'book08.html';
+                        break;
+                }
+                
+                // الانتقال إلى الصفحة بعد فترة قصيرة
+                setTimeout(() => {
+                    if (pageUrl) {
+                        window.location.href = pageUrl;
+                    } else {
+                        showToast(`صفحة ${languageName} غير متوفرة حالياً`);
+                    }
+                }, 500);
+            }
+            
+            // مستمعو أحداث بطاقات اللغات
+            document.querySelectorAll('.language-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const languageName = this.getAttribute('data-language');
+                    openLanguagePage(languageName);
+                });
+            });
+            
+            // تحديث حالة أزرار المفضلة عند تحميل الصفحة
+            function updateFavoriteButtons() {
+                const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                
+                document.querySelectorAll('.language-card').forEach(card => {
+                    const languageName = card.getAttribute('data-language');
+                    const favoriteBtn = card.querySelector('.favorite-btn');
+                    const icon = favoriteBtn.querySelector('i');
+                    
+                    if (favorites.includes(languageName)) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        favoriteBtn.classList.add('active');
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        favoriteBtn.classList.remove('active');
+                    }
+                });
+            }
+            
+            // تحديث أزرار المفضلة عند تحميل الصفحة
+            updateFavoriteButtons();
+            
+            // تسجيل خدمة العامل (PWA)
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered successfully');
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            }
+            
+            // التحقق من اتصال الإنترنت
+            window.addEventListener('online', () => {
+                showToast('أنت متصل بالإنترنت الآن');
+            });
+            
+            window.addEventListener('offline', () => {
+                showToast('أنت غير متصل بالإنترنت');
+            });
+        });
     </script>
 </body>
 </html>
+
