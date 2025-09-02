@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <title>أساسيات Java</title>
+    <title>مرجع JavaScript الأساسي</title>
     <style>
         :root {
-            --primary-color: #f89820;
-            --secondary-color: #007396;
+            --primary-color: #f7df1e;
+            --secondary-color: #323330;
             --accent-color: #e74c3c;
             --light-color: #f8f9fa;
             --dark-color: #2c3e50;
@@ -54,12 +54,12 @@
             right: 0;
             width: 200px;
             height: 200px;
-            background: linear-gradient(135deg, rgba(248, 152, 32, 0.1), rgba(0, 115, 150, 0.1));
+            background: linear-gradient(135deg, rgba(247, 223, 30, 0.1), rgba(50, 51, 48, 0.1));
             border-radius: 0 0 0 200px;
             z-index: 0;
         }
         
-        .java-header {
+        .js-header {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -68,7 +68,7 @@
             z-index: 1;
         }
         
-        .java-logo {
+        .js-logo {
             width: 80px;
             height: 80px;
             margin-left: 20px;
@@ -76,15 +76,15 @@
             align-items: center;
             justify-content: center;
             background-color: var(--secondary-color);
-            color: white;
+            color: var(--primary-color);
             border-radius: 50%;
             font-size: 36px;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 115, 150, 0.3);
+            box-shadow: 0 4px 10px rgba(50, 51, 48, 0.3);
         }
         
         h1 {
-            color: var(--primary-color);
+            color: var(--secondary-color);
             font-size: 36px;
             font-weight: 700;
             margin: 0;
@@ -119,42 +119,42 @@
             font-size: 20px;
         }
         
-        .java-card {
+        .js-card {
             background-color: #f8f9fa;
             border-radius: var(--radius);
             padding: 20px;
             margin-bottom: 25px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
-            border-right: 4px solid var(--secondary-color);
+            border-right: 4px solid var(--primary-color);
             position: relative;
             overflow: hidden;
         }
         
-        .java-card::after {
+        .js-card::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--secondary-color), transparent);
+            background: linear-gradient(90deg, var(--primary-color), transparent);
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.3s ease;
         }
         
-        .java-card:hover {
+        .js-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
         
-        .java-card:hover::after {
+        .js-card:hover::after {
             transform: scaleX(1);
             transform-origin: left;
         }
         
-        .java-code {
+        .js-code {
             background: #2d3748;
             color: #e2e8f0;
             padding: 15px;
@@ -172,33 +172,37 @@
             overflow-x: auto;
         }
         
-        .java-code::before {
-            content: 'Java';
+        .js-code::before {
+            content: 'JavaScript';
             position: absolute;
             top: 5px;
             right: 10px;
             font-size: 12px;
-            color: #f89820;
+            color: var(--primary-color);
             font-weight: bold;
         }
         
-        .java-comment {
+        .js-comment {
             color: #68d391;
             font-style: italic;
         }
         
-        .java-keyword {
+        .js-keyword {
             color: #f89820;
             font-weight: bold;
         }
         
-        .java-string {
+        .js-string {
             color: #68d391;
         }
         
+        .js-function {
+            color: #4299e1;
+        }
+        
         .back-button {
-            background: linear-gradient(135deg, var(--primary-color), #e67e22);
-            color: white;
+            background: linear-gradient(135deg, var(--primary-color), #e6c200);
+            color: var(--secondary-color);
             font-size: 16px;
             border: none;
             padding: 12px 24px;
@@ -210,15 +214,15 @@
             z-index: 1000;
             display: flex;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(248, 152, 32, 0.3);
+            box-shadow: 0 4px 15px rgba(247, 223, 30, 0.3);
             transition: var(--transition);
             font-weight: 500;
         }
         
         .back-button:hover {
-            background: linear-gradient(135deg, #e67e22, #d35400);
+            background: linear-gradient(135deg, #e6c200, #ccad00);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(248, 152, 32, 0.4);
+            box-shadow: 0 6px 20px rgba(247, 223, 30, 0.4);
         }
         
         .back-button i {
@@ -297,7 +301,7 @@
         
         .code-description i {
             margin-left: 8px;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             font-size: 12px;
         }
         
@@ -316,7 +320,7 @@
             opacity: 0;
         }
         
-        .java-card:hover .copy-button {
+        .js-card:hover .copy-button {
             opacity: 1;
         }
         
@@ -355,11 +359,11 @@
                 border-radius: var(--radius);
             }
             
-            .java-header {
+            .js-header {
                 flex-direction: column;
             }
             
-            .java-logo {
+            .js-logo {
                 margin-left: 0;
                 margin-bottom: 15px;
             }
@@ -372,7 +376,7 @@
                 font-size: 20px;
             }
             
-            .java-code {
+            .js-code {
                 font-size: 14px;
                 padding: 12px;
             }
@@ -394,13 +398,13 @@
     </button>
     
     <div class="container">
-        <div class="java-header">
-            <div class="java-logo">Java</div>
-            <h1>أساسيات Java</h1>
+        <div class="js-header">
+            <div class="js-logo">JS</div>
+            <h1>مرجع JavaScript الأساسي</h1>
         </div>
         
         <div class="search-container">
-            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن أمر Java...">
+            <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن أمر JavaScript...">
             <button class="search-btn" id="searchBtn">
                 <i class="fas fa-search"></i>
             </button>
@@ -412,205 +416,244 @@
             <p>جرب البحث بكلمات أخرى</p>
         </div>
         
-        <div id="javaContent">
-            <!-- طباعة النصوص -->
-            <div class="category-section" data-category="print">
-                <h2><i class="fas fa-print"></i> طباعة النصوص</h2>
+        <div id="jsContent">
+            <!-- طباعة القيم في وحدة التحكم -->
+            <div class="category-section" data-category="console">
+                <h2><i class="fas fa-terminal"></i> طباعة القيم في وحدة التحكم</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">System.out.println</span>(<span class="java-string">"مرحبًا بالعالم!"</span>);</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> يستخدم لطباعة النصوص وعرضها على الشاشة</div>
+                    <code class="js-code"><span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"Hello, World!"</span>);</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> يستخدم لطباعة الرسائل في وحدة تحكم المتصفح</div>
                 </div>
             </div>
             
-            <!-- المتغيرات -->
+            <!-- تعريف المتغيرات -->
             <div class="category-section" data-category="variables">
-                <h2><i class="fas fa-code"></i> المتغيرات</h2>
+                <h2><i class="fas fa-code"></i> تعريف المتغيرات</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">int</span> age = <span class="java-string">25</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير رقمي صحيح</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">double</span> pi = <span class="java-string">3.14</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير رقمي عشري</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">String</span> name = <span class="java-string">"أحمد"</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير نصي</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">boolean</span> isAdult = <span class="java-keyword">true</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغير منطقي (صواب/خطأ)</div>
+                    <code class="js-code"><span class="js-keyword">let</span> name = <span class="js-string">"Ali"</span>;
+<span class="js-keyword">const</span> PI = <span class="js-string">3.14</span>;
+<span class="js-keyword">var</span> age = <span class="js-string">25</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف متغيرات باستخدام let, const, و var</div>
                 </div>
             </div>
             
-            <!-- العمليات الحسابية -->
-            <div class="category-section" data-category="operations">
-                <h2><i class="fas fa-calculator"></i> العمليات الحسابية</h2>
+            <!-- أنواع البيانات الأساسية -->
+            <div class="category-section" data-category="datatypes">
+                <h2><i class="fas fa-database"></i> أنواع البيانات الأساسية</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">int</span> sum = <span class="java-string">10</span> + <span class="java-string">5</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> عملية الجمع</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">int</span> product = <span class="java-string">10</span> * <span class="java-string">5</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> عملية الضرب</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">double</span> division = <span class="java-string">10.0</span> / <span class="java-string">2</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> عملية القسمة</div>
+                    <code class="js-code"><span class="js-keyword">let</span> number = <span class="js-string">10</span>;
+<span class="js-keyword">let</span> text = <span class="js-string">"JavaScript"</span>;
+<span class="js-keyword">let</span> isTrue = <span class="js-keyword">true</span>;
+<span class="js-keyword">let</span> list = [<span class="js-string">1</span>, <span class="js-string">2</span>, <span class="js-string">3</span>];
+<span class="js-keyword">let</span> person = { name: <span class="js-string">"Ali"</span>, age: <span class="js-string">25</span> };
+<span class="js-keyword">let</span> nothing = <span class="js-keyword">null</span>;
+<span class="js-keyword">let</span> unknown;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> أنواع البيانات المختلفة في JavaScript</div>
                 </div>
             </div>
             
-            <!-- الشروط -->
+            <!-- الشروط (if - else) -->
             <div class="category-section" data-category="conditions">
-                <h2><i class="fas fa-code-branch"></i> الشروط</h2>
+                <h2><i class="fas fa-code-branch"></i> الشروط (if - else)</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">if</span> (age > <span class="java-string">18</span>) { 
-    <span class="java-keyword">System.out.println</span>(<span class="java-string">"بالغ"</span>); 
+                    <code class="js-code"><span class="js-keyword">if</span> (score >= <span class="js-string">90</span>) {
+    <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"ممتاز"</span>);
+} <span class="js-keyword">else if</span> (score >= <span class="js-string">70</span>) {
+    <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"جيد"</span>);
+} <span class="js-keyword">else</span> {
+    <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"ضعيف"</span>);
 }</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> شرط إذا كان العمر أكبر من 18</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">else</span> { 
-    <span class="java-keyword">System.out.println</span>(<span class="java-string">"قاصر"</span>); 
-}</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> شرط آخر إذا لم يتحقق الشرط الأول</div>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> استخدام الشروط لاتخاذ القرارات</div>
                 </div>
             </div>
             
-            <!-- الحلقات -->
+            <!-- الحلقات التكرارية -->
             <div class="category-section" data-category="loops">
-                <h2><i class="fas fa-sync-alt"></i> الحلقات</h2>
+                <h2><i class="fas fa-sync-alt"></i> الحلقات التكرارية</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">for</span> (<span class="java-keyword">int</span> i = <span class="java-string">0</span>; i < <span class="java-string">5</span>; i++) { 
-    <span class="java-keyword">System.out.println</span>(i); 
+                    <code class="js-code"><span class="js-keyword">for</span> (<span class="js-keyword">let</span> i = <span class="js-string">0</span>; i < <span class="js-string">5</span>; i++) {
+    <span class="js-keyword">console</span>.<span class="js-function">log</span>(i);
 }</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> حلقة for لتكرار الكود 5 مرات</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">while</span> (age < <span class="java-string">30</span>) { 
-    age++; 
-}</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> حلقة while تستمر طالما العمر أقل من 30</div>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> حلقة for لتكرار الكود</div>
                 </div>
             </div>
             
-            <!-- المصفوفات -->
-            <div class="category-section" data-category="arrays">
-                <h2><i class="fas fa-list"></i> المصفوفات</h2>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">int</span>[] numbers = {<span class="java-string">1</span>, <span class="java-string">2</span>, <span class="java-string">3</span>, <span class="java-string">4</span>, <span class="java-string">5</span>};</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف مصفوفة أرقام</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">System.out.println</span>(numbers[<span class="java-string">0</span>]); <span class="java-comment">// 1</span></code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> الوصول لعنصر في المصفوفة (الفهرس يبدأ من 0)</div>
-                </div>
-            </div>
-            
-            <!-- الكائنات -->
-            <div class="category-section" data-category="objects">
-                <h2><i class="fas fa-cube"></i> الكائنات</h2>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">class</span> Person {
-    String name;
-    <span class="java-keyword">int</span> age;
-}</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف كلاس Person</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code">Person p = <span class="java-keyword">new</span> Person();</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> إنشاء كائن من كلاس Person</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code">p.name = <span class="java-string">"أحمد"</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعيين قيمة لخاصية name</div>
-                </div>
-            </div>
-            
-            <!-- الدوال -->
+            <!-- إنشاء دالة -->
             <div class="category-section" data-category="functions">
-                <h2><i class="fas fa-cogs"></i> الدوال</h2>
+                <h2><i class="fas fa-cogs"></i> إنشاء دالة</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">public static int</span> add(<span class="java-keyword">int</span> a, <span class="java-keyword">int</span> b) {
-    <span class="java-keyword">return</span> a + b;
+                    <code class="js-code"><span class="js-keyword">function</span> <span class="js-function">greet</span>(name) {
+    <span class="js-keyword">return</span> <span class="js-string">"مرحبًا "</span> + name;
 }</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> دالة تجمع رقمين وترجع الناتج</div>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف دالة ترجع تحية</div>
                 </div>
             </div>
             
-            <!-- التعامل مع النصوص -->
-            <div class="category-section" data-category="strings">
-                <h2><i class="fas fa-font"></i> التعامل مع النصوص</h2>
+            <!-- استخدام الدوال السهمية -->
+            <div class="category-section" data-category="arrow-functions">
+                <h2><i class="fas fa-arrow-right"></i> استخدام الدوال السهمية</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code">String text = <span class="java-string">"مرحبًا"</span>.toUpperCase();</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تحويل النص إلى أحرف كبيرة</div>
-                </div>
-                
-                <div class="java-card">
-                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code"><span class="java-keyword">System.out.println</span>(text); <span class="java-comment">// مرحبًا بحروف كبيرة</span></code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> طباعة النص بعد تحويله</div>
+                    <code class="js-code"><span class="js-keyword">const</span> <span class="js-function">sum</span> = (a, b) => a + b;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> دالة سهمية تجمع رقمين</div>
                 </div>
             </div>
             
-            <!-- إنشاء كائنات -->
-            <div class="category-section" data-category="creation">
-                <h2><i class="fas fa-plus-circle"></i> إنشاء كائنات</h2>
+            <!-- التعامل مع المصفوفات -->
+            <div class="category-section" data-category="arrays">
+                <h2><i class="fas fa-list"></i> التعامل مع المصفوفات</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code">Person person = <span class="java-keyword">new</span> Person();</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> إنشاء كائن جديد</div>
+                    <code class="js-code">numbers.<span class="js-function">forEach</span>(num => <span class="js-keyword">console</span>.<span class="js-function">log</span>(num));
+<span class="js-keyword">let</span> doubled = numbers.<span class="js-function">map</span>(num => num * <span class="js-string">2</span>);</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> استخدام forEach و map للتعامل مع المصفوفات</div>
                 </div>
+            </div>
+            
+            <!-- التعامل مع الكائنات -->
+            <div class="category-section" data-category="objects">
+                <h2><i class="fas fa-cube"></i> التعامل مع الكائنات</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code">person.name = <span class="java-string">"محمد"</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعيين اسم للكائن</div>
+                    <code class="js-code"><span class="js-keyword">let</span> person = {
+    name: <span class="js-string">"Ali"</span>,
+    age: <span class="js-string">25</span>,
+    <span class="js-function">greet</span>() {
+        <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"مرحبًا، اسمي "</span> + <span class="js-keyword">this</span>.name);
+    }
+};</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تعريف كائن يحتوي على خصائص ودالة</div>
                 </div>
+            </div>
+            
+            <!-- التحقق من القيم -->
+            <div class="category-section" data-category="comparison">
+                <h2><i class="fas fa-balance-scale"></i> التحقق من القيم</h2>
                 
-                <div class="java-card">
+                <div class="js-card">
                     <button class="copy-button" onclick="copyCode(this)">نسخ</button>
-                    <code class="java-code">person.age = <span class="java-string">30</span>;</code>
-                    <div class="code-description"><i class="fas fa-info-circle"></i> تعيين عمر للكائن</div>
+                    <code class="js-code"><span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">5</span> == <span class="js-string">"5"</span>);  <span class="js-comment">// true</span>
+<span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">5</span> === <span class="js-string">"5"</span>); <span class="js-comment">// false</span></code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> المقارنة بين القيم (==) والقيم والأنواع (===)</div>
+                </div>
+            </div>
+            
+            <!-- التعامل مع الوقت والتاريخ -->
+            <div class="category-section" data-category="datetime">
+                <h2><i class="fas fa-clock"></i> التعامل مع الوقت والتاريخ</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code"><span class="js-keyword">let</span> now = <span class="js-keyword">new</span> <span class="js-function">Date</span>();
+<span class="js-keyword">console</span>.<span class="js-function">log</span>(now.<span class="js-function">toLocaleString</span>());</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> إنشاء كائن تاريخ وعرضه</div>
+                </div>
+            </div>
+            
+            <!-- استخدام setTimeout و setInterval -->
+            <div class="category-section" data-category="timers">
+                <h2><i class="fas fa-hourglass-half"></i> استخدام setTimeout و setInterval</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code"><span class="js-function">setTimeout</span>(() => <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"تم التنفيذ"</span>), <span class="js-string">2000</span>);
+<span class="js-function">setInterval</span>(() => <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"تكرار"</span>), <span class="js-string">1000</span>);</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تنفيذ الكود بعد فترة زمنية محددة</div>
+                </div>
+            </div>
+            
+            <!-- استخدام try...catch -->
+            <div class="category-section" data-category="error-handling">
+                <h2><i class="fas fa-exclamation-triangle"></i> استخدام try...catch</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code"><span class="js-keyword">try</span> {
+    <span class="js-keyword">let</span> result = x / <span class="js-string">0</span>;
+} <span class="js-keyword">catch</span> (error) {
+    <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"حدث خطأ: "</span> + error.message);
+}</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> التعامل مع الأخطاء باستخدام try...catch</div>
+                </div>
+            </div>
+            
+            <!-- جلب بيانات من API -->
+            <div class="category-section" data-category="api">
+                <h2><i class="fas fa-cloud-download-alt"></i> جلب بيانات من API</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code"><span class="js-function">fetch</span>(<span class="js-string">"https://jsonplaceholder.typicode.com/posts/1"</span>)
+    .<span class="js-function">then</span>(response => response.<span class="js-function">json</span>())
+    .<span class="js-function">then</span>(data => <span class="js-keyword">console</span>.<span class="js-function">log</span>(data))
+    .<span class="js-function">catch</span>(error => <span class="js-keyword">console</span>.<span class="js-function">log</span>(<span class="js-string">"خطأ: "</span> + error));</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> جلب البيانات من API باستخدام fetch</div>
+                </div>
+            </div>
+            
+            <!-- التفاعل مع HTML باستخدام DOM -->
+            <div class="category-section" data-category="dom">
+                <h2><i class="fas fa-code"></i> التفاعل مع HTML باستخدام DOM</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code">document.<span class="js-function">getElementById</span>(<span class="js-string">"myElement"</span>).innerText = <span class="js-string">"تم التغيير!"</span>;</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تغيير محتوى عنصر HTML</div>
+                </div>
+            </div>
+            
+            <!-- التعامل مع الأحداث -->
+            <div class="category-section" data-category="events">
+                <h2><i class="fas fa-mouse-pointer"></i> التعامل مع الأحداث</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code">document.<span class="js-function">getElementById</span>(<span class="js-string">"btn"</span>).<span class="js-function">addEventListener</span>(<span class="js-string">"click"</span>, () => {
+    alert(<span class="js-string">"تم الضغط!"</span>);
+});</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> الاستجابة لحدث النقر على زر</div>
+                </div>
+            </div>
+            
+            <!-- استخدام localStorage -->
+            <div class="category-section" data-category="storage">
+                <h2><i class="fas fa-save"></i> استخدام localStorage</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code">localStorage.<span class="js-function">setItem</span>(<span class="js-string">"username"</span>, <span class="js-string">"Ali"</span>);
+<span class="js-keyword">console</span>.<span class="js-function">log</span>(localStorage.<span class="js-function">getItem</span>(<span class="js-string">"username"</span>));</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> تخزين البيانات في المتصفح</div>
+                </div>
+            </div>
+            
+            <!-- استخدام Promise و async/await -->
+            <div class="category-section" data-category="async">
+                <h2><i class="fas fa-sync"></i> استخدام Promise و async/await</h2>
+                
+                <div class="js-card">
+                    <button class="copy-button" onclick="copyCode(this)">نسخ</button>
+                    <code class="js-code"><span class="js-keyword">async function</span> <span class="js-function">getData</span>() {
+    <span class="js-keyword">let</span> data = <span class="js-keyword">await</span> <span class="js-function">fetchData</span>();
+    <span class="js-keyword">console</span>.<span class="js-function">log</span>(data);
+}
+<span class="js-function">getData</span>();</code>
+                    <div class="code-description"><i class="fas fa-info-circle"></i> استخدام async/await للتعامل مع العمليات غير المتزامنة</div>
                 </div>
             </div>
         </div>
@@ -619,12 +662,12 @@
     <div class="toast" id="toast"></div>
     
     <script>
-        // وظيفة البحث في أوامر Java
+        // وظيفة البحث في أوامر JavaScript
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const searchBtn = document.getElementById('searchBtn');
-            const javaContent = document.getElementById('javaContent');
-            const categorySections = javaContent.querySelectorAll('.category-section');
+            const jsContent = document.getElementById('jsContent');
+            const categorySections = jsContent.querySelectorAll('.category-section');
             const emptyResult = document.getElementById('emptyResult');
             
             function filterContent() {
@@ -633,7 +676,7 @@
                 
                 // إظهار/إخفاء الأقسام والبطاقات بناءً على نص البحث
                 categorySections.forEach(section => {
-                    const cards = section.querySelectorAll('.java-card');
+                    const cards = section.querySelectorAll('.js-card');
                     let sectionHasVisibleCards = false;
                     
                     cards.forEach(card => {
@@ -657,10 +700,10 @@
                 // إظهار أو إخفاء رسالة عدم وجود نتائج
                 if (visibleSections === 0 && searchText !== '') {
                     emptyResult.style.display = 'block';
-                    javaContent.style.display = 'none';
+                    jsContent.style.display = 'none';
                 } else {
                     emptyResult.style.display = 'none';
-                    javaContent.style.display = 'block';
+                    jsContent.style.display = 'block';
                 }
             }
             
@@ -700,4 +743,5 @@
     </script>
 </body>
 </html>
+
 
