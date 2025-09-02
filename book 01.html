@@ -1,169 +1,451 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <title>جدول أكواد HTML</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Tajawal', sans-serif;
             margin: 0;
-            padding: 10px;
+            padding: 15px;
             background-color: #f9f9f9;
+            color: var(--text-color);
+            padding-top: 70px; /* مساحة للزر الثابت */
         }
-        h2 {
+        
+        .header {
             text-align: center;
+            margin-bottom: 30px;
+            position: relative;
         }
+        
+        h2 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 25px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: none;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: var(--shadow);
+            font-size: 16px;
+            font-family: 'Tajawal', sans-serif;
+            text-align: right;
+            outline: none;
+        }
+        
+        .search-btn {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
             font-size: 16px;
             text-align: right;
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        
         th, td {
             border: 1px solid #ddd;
-            padding: 10px;
-            font-size: 18px;
+            padding: 12px 15px;
+            font-size: 16px;
         }
+        
         th {
-            background-color: rgb(147, 170, 192);;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
         }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .code {
+            font-family: 'Courier New', monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .back-button {
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 16px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .back-button i {
+            margin-left: 8px;
+        }
+        
+        .category {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 8px 15px;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .category-title {
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .empty-result {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            display: none;
+        }
+        
+        .empty-result i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+        
         @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                padding-top: 70px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            .table-container {
+                border-radius: 8px;
+            }
+            
             table {
                 font-size: 14px;
             }
+            
             th, td {
-                padding: 8px;
+                padding: 8px 10px;
+            }
+            
+            .back-button {
+                padding: 8px 15px;
+                font-size: 14px;
             }
         }
-        .back-button {
-    background-color: #ff781e;
-    color: white;
-    font-size: 16px;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: fixed; /* لجعل الزر ثابتًا */
-    top: 20px; /* المسافة من أعلى الصفحة */
-    left: 20px; /* المسافة من يسار الصفحة */
-    z-index: 1000; /* تأكد من أن الزر يظهر فوق المحتوى */
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #2980b9;
-}
-
     </style>
 </head>
 <body>
-    <h2> : HTML اساسيات</h2>
-    <button onclick="goBack()" class="back-button">رجوع</button>
-
-    <table>
-        <tr>
-            <th>الكود</th>
-            <th>الوظيفة</th>
-        </tr>
-        <!-- النصوص والعناوين -->
-        <tr><td>&lt;h1&gt; - &lt;h6&gt;</td><td>عناوين النصوص بمستويات مختلفة</td></tr>
-        <tr><td>&lt;p&gt;</td><td>فقرة نصية</td></tr>
-        <tr><td>&lt;br&gt;</td><td>فاصل سطر جديد</td></tr>
-        <tr><td>&lt;hr&gt;</td><td>خط أفقي لفصل المحتوى</td></tr>
-        <tr><td>&lt;strong&gt;</td><td>نص بارز (غامق)</td></tr>
-        <tr><td>&lt;em&gt;</td><td>نص مائل</td></tr>
-        <tr><td>&lt;mark&gt;</td><td>تمييز نص بخلفية</td></tr>
-        <tr><td>&lt;small&gt;</td><td>تصغير حجم النص</td></tr>
-        <tr><td>&lt;del&gt;</td><td>إظهار النص كأنه محذوف</td></tr>
-        <tr><td>&lt;ins&gt;</td><td>إظهار النص كأنه مضاف</td></tr>
-        <tr><td>&lt;sub&gt;</td><td>نص سفلي</td></tr>
-        <tr><td>&lt;sup&gt;</td><td>نص علوي</td></tr>
+    <button onclick="goBack()" class="back-button">
+        <i class="fas fa-arrow-right"></i> رجوع
+    </button>
     
-        <!-- الروابط والصور -->
-        <tr><td>&lt;a href="URL"&gt;</td><td>رابط تشعبي</td></tr>
-        <tr><td>&lt;img src="URL" alt="نص بديل"&gt;</td><td>إدراج صورة</td></tr>
+    <div class="header">
+        <h2>أساسيات HTML</h2>
+        <p class="subtitle">جدول شامل لأهم الأكواد المستخدمة في لغة HTML</p>
+    </div>
     
-        <!-- القوائم -->
-        <tr><td>&lt;ul&gt;</td><td>قائمة غير مرتبة</td></tr>
-        <tr><td>&lt;ol&gt;</td><td>قائمة مرتبة</td></tr>
-        <tr><td>&lt;li&gt;</td><td>عنصر داخل قائمة</td></tr>
-        <tr><td>&lt;dl&gt;</td><td>قائمة وصفية</td></tr>
-        <tr><td>&lt;dt&gt;</td><td>العنصر الرئيسي في القائمة الوصفية</td></tr>
-        <tr><td>&lt;dd&gt;</td><td>وصف العنصر في القائمة الوصفية</td></tr>
+    <div class="search-container">
+        <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن كود HTML...">
+        <button class="search-btn" id="searchBtn">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
     
-        <!-- الجداول -->
-        <tr><td>&lt;table&gt;</td><td>إنشاء جدول</td></tr>
-        <tr><td>&lt;tr&gt;</td><td>صف داخل الجدول</td></tr>
-        <tr><td>&lt;td&gt;</td><td>خلية بيانات</td></tr>
-        <tr><td>&lt;th&gt;</td><td>خلية عنوان</td></tr>
-        <tr><td>&lt;thead&gt;</td><td>رأس الجدول</td></tr>
-        <tr><td>&lt;tbody&gt;</td><td>جسم الجدول</td></tr>
-        <tr><td>&lt;tfoot&gt;</td><td>تذييل الجدول</td></tr>
-        <tr><td>&lt;colgroup&gt;</td><td>تحديد مجموعة أعمدة</td></tr>
-        <tr><td>&lt;col&gt;</td><td>تحديد عمود داخل &lt;colgroup&gt;</td></tr>
+    <div class="empty-result" id="emptyResult">
+        <i class="fas fa-search"></i>
+        <h3>لا توجد نتائج</h3>
+        <p>جرب البحث بكلمات أخرى</p>
+    </div>
     
-        <!-- النماذج والإدخالات -->
-        <tr><td>&lt;form&gt;</td><td>إنشاء نموذج إدخال بيانات</td></tr>
-        <tr><td>&lt;input type="text"&gt;</td><td>إدخال نصي</td></tr>
-        <tr><td>&lt;input type="password"&gt;</td><td>إدخال كلمة مرور</td></tr>
-        <tr><td>&lt;input type="email"&gt;</td><td>إدخال بريد إلكتروني</td></tr>
-        <tr><td>&lt;input type="number"&gt;</td><td>إدخال رقم</td></tr>
-        <tr><td>&lt;input type="date"&gt;</td><td>إدخال تاريخ</td></tr>
-        <tr><td>&lt;input type="file"&gt;</td><td>رفع ملف</td></tr>
-        <tr><td>&lt;input type="checkbox"&gt;</td><td>مربع اختيار</td></tr>
-        <tr><td>&lt;input type="radio"&gt;</td><td>زر اختيار</td></tr>
-        <tr><td>&lt;textarea&gt;</td><td>حقل نصي متعدد الأسطر</td></tr>
-        <tr><td>&lt;select&gt;</td><td>قائمة منسدلة</td></tr>
-        <tr><td>&lt;option&gt;</td><td>خيار داخل القائمة المنسدلة</td></tr>
-        <tr><td>&lt;button&gt;</td><td>زر قابل للضغط</td></tr>
-    
-        <!-- هيكلة الصفحة -->
-        <tr><td>&lt;header&gt;</td><td>رأس الصفحة</td></tr>
-        <tr><td>&lt;footer&gt;</td><td>تذييل الصفحة</td></tr>
-        <tr><td>&lt;nav&gt;</td><td>شريط تنقل</td></tr>
-        <tr><td>&lt;section&gt;</td><td>قسم داخل الصفحة</td></tr>
-        <tr><td>&lt;article&gt;</td><td>محتوى مستقل</td></tr>
-        <tr><td>&lt;aside&gt;</td><td>محتوى جانبي</td></tr>
-        <tr><td>&lt;main&gt;</td><td>القسم الرئيسي للصفحة</td></tr>
-    
-        <!-- الوسائط -->
-        <tr><td>&lt;audio controls&gt;&lt;/audio&gt;</td><td>إدراج ملف صوتي</td></tr>
-        <tr><td>&lt;video controls&gt;&lt;/video&gt;</td><td>إدراج ملف فيديو</td></tr>
-        <tr><td>&lt;source&gt;</td><td>مصدر ملف صوتي أو فيديو</td></tr>
-        <tr><td>&lt;iframe src="URL"&gt;</td><td>إدراج صفحة داخل صفحة</td></tr>
-    
-        <!-- الأكواد والبرمجة -->
-        <tr><td>&lt;code&gt;</td><td>تنسيق النص ككود برمجي</td></tr>
-        <tr><td>&lt;pre&gt;</td><td>عرض النص كما هو مع الاحتفاظ بالمسافات</td></tr>
-        <tr><td>&lt;kbd&gt;</td><td>إبراز مدخلات لوحة المفاتيح</td></tr>
-        <tr><td>&lt;samp&gt;</td><td>إبراز مخرجات البرامج</td></tr>
-    
-        <!-- عناصر متقدمة -->
-        <tr><td>&lt;progress&gt;</td><td>شريط تقدم</td></tr>
-        <tr><td>&lt;meter&gt;</td><td>مؤشر قيمة ضمن نطاق</td></tr>
-        <tr><td>&lt;details&gt;</td><td>قسم قابل للطي</td></tr>
-        <tr><td>&lt;summary&gt;</td><td>عنوان لقسم قابل للطي</td></tr>
-    
-        <!-- عناصر التحكم في العرض -->
-        <tr><td>&lt;div&gt;</td><td>عنصر تقسيم عام</td></tr>
-        <tr><td>&lt;span&gt;</td><td>عنصر نصي يستخدم للتنسيق</td></tr>
-        <tr><td>&lt;bdo dir="rtl"&gt;</td><td>تغيير اتجاه النص</td></tr>
-        <tr><td>&lt;time&gt;</td><td>تمثيل التاريخ والوقت</td></tr>
-    </table>
+    <div class="table-container">
+        <table id="htmlTable">
+            <thead>
+                <tr>
+                    <th>الكود</th>
+                    <th>الوظيفة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- النصوص والعناوين -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">النصوص والعناوين</td>
+                </tr>
+                <tr><td><span class="code">&lt;h1&gt; - &lt;h6&gt;</span></td><td>عناوين النصوص بمستويات مختلفة</td></tr>
+                <tr><td><span class="code">&lt;p&gt;</span></td><td>فقرة نصية</td></tr>
+                <tr><td><span class="code">&lt;br&gt;</span></td><td>فاصل سطر جديد</td></tr>
+                <tr><td><span class="code">&lt;hr&gt;</span></td><td>خط أفقي لفصل المحتوى</td></tr>
+                <tr><td><span class="code">&lt;strong&gt;</span></td><td>نص بارز (غامق)</td></tr>
+                <tr><td><span class="code">&lt;em&gt;</span></td><td>نص مائل</td></tr>
+                <tr><td><span class="code">&lt;mark&gt;</span></td><td>تمييز نص بخلفية</td></tr>
+                <tr><td><span class="code">&lt;small&gt;</span></td><td>تصغير حجم النص</td></tr>
+                <tr><td><span class="code">&lt;del&gt;</span></td><td>إظهار النص كأنه محذوف</td></tr>
+                <tr><td><span class="code">&lt;ins&gt;</span></td><td>إظهار النص كأنه مضاف</td></tr>
+                <tr><td><span class="code">&lt;sub&gt;</span></td><td>نص سفلي</td></tr>
+                <tr><td><span class="code">&lt;sup&gt;</span></td><td>نص علوي</td></tr>
+        
+                <!-- الروابط والصور -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">الروابط والصور</td>
+                </tr>
+                <tr><td><span class="code">&lt;a href="URL"&gt;</span></td><td>رابط تشعبي</td></tr>
+                <tr><td><span class="code">&lt;img src="URL" alt="نص بديل"&gt;</span></td><td>إدراج صورة</td></tr>
+        
+                <!-- القوائم -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">القوائم</td>
+                </tr>
+                <tr><td><span class="code">&lt;ul&gt;</span></td><td>قائمة غير مرتبة</td></tr>
+                <tr><td><span class="code">&lt;ol&gt;</span></td><td>قائمة مرتبة</td></tr>
+                <tr><td><span class="code">&lt;li&gt;</span></td><td>عنصر داخل قائمة</td></tr>
+                <tr><td><span class="code">&lt;dl&gt;</span></td><td>قائمة وصفية</td></tr>
+                <tr><td><span class="code">&lt;dt&gt;</span></td><td>العنصر الرئيسي في القائمة الوصفية</td></tr>
+                <tr><td><span class="code">&lt;dd&gt;</span></td><td>وصف العنصر في القائمة الوصفية</td></tr>
+        
+                <!-- الجداول -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">الجداول</td>
+                </tr>
+                <tr><td><span class="code">&lt;table&gt;</span></td><td>إنشاء جدول</td></tr>
+                <tr><td><span class="code">&lt;tr&gt;</span></td><td>صف داخل الجدول</td></tr>
+                <tr><td><span class="code">&lt;td&gt;</span></td><td>خلية بيانات</td></tr>
+                <tr><td><span class="code">&lt;th&gt;</span></td><td>خلية عنوان</td></tr>
+                <tr><td><span class="code">&lt;thead&gt;</span></td><td>رأس الجدول</td></tr>
+                <tr><td><span class="code">&lt;tbody&gt;</span></td><td>جسم الجدول</td></tr>
+                <tr><td><span class="code">&lt;tfoot&gt;</span></td><td>تذييل الجدول</td></tr>
+                <tr><td><span class="code">&lt;colgroup&gt;</span></td><td>تحديد مجموعة أعمدة</td></tr>
+                <tr><td><span class="code">&lt;col&gt;</span></td><td>تحديد عمود داخل &lt;colgroup&gt;</span></td></tr>
+        
+                <!-- النماذج والإدخالات -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">النماذج والإدخالات</td>
+                </tr>
+                <tr><td><span class="code">&lt;form&gt;</span></td><td>إنشاء نموذج إدخال بيانات</td></tr>
+                <tr><td><span class="code">&lt;input type="text"&gt;</span></td><td>إدخال نصي</td></tr>
+                <tr><td><span class="code">&lt;input type="password"&gt;</span></td><td>إدخال كلمة مرور</td></tr>
+                <tr><td><span class="code">&lt;input type="email"&gt;</span></td><td>إدخال بريد إلكتروني</td></tr>
+                <tr><td><span class="code">&lt;input type="number"&gt;</span></td><td>إدخال رقم</td></tr>
+                <tr><td><span class="code">&lt;input type="date"&gt;</span></td><td>إدخال تاريخ</td></tr>
+                <tr><td><span class="code">&lt;input type="file"&gt;</span></td><td>رفع ملف</td></tr>
+                <tr><td><span class="code">&lt;input type="checkbox"&gt;</span></td><td>مربع اختيار</td></tr>
+                <tr><td><span class="code">&lt;input type="radio"&gt;</span></td><td>زر اختيار</td></tr>
+                <tr><td><span class="code">&lt;textarea&gt;</span></td><td>حقل نصي متعدد الأسطر</td></tr>
+                <tr><td><span class="code">&lt;select&gt;</span></td><td>قائمة منسدلة</td></tr>
+                <tr><td><span class="code">&lt;option&gt;</span></td><td>خيار داخل القائمة المنسدلة</td></tr>
+                <tr><td><span class="code">&lt;button&gt;</span></td><td>زر قابل للضغط</td></tr>
+        
+                <!-- هيكلة الصفحة -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">هيكلة الصفحة</td>
+                </tr>
+                <tr><td><span class="code">&lt;header&gt;</span></td><td>رأس الصفحة</td></tr>
+                <tr><td><span class="code">&lt;footer&gt;</span></td><td>تذييل الصفحة</td></tr>
+                <tr><td><span class="code">&lt;nav&gt;</span></td><td>شريط تنقل</td></tr>
+                <tr><td><span class="code">&lt;section&gt;</span></td><td>قسم داخل الصفحة</td></tr>
+                <tr><td><span class="code">&lt;article&gt;</span></td><td>محتوى مستقل</td></tr>
+                <tr><td><span class="code">&lt;aside&gt;</span></td><td>محتوى جانبي</td></tr>
+                <tr><td><span class="code">&lt;main&gt;</span></td><td>القسم الرئيسي للصفحة</td></tr>
+        
+                <!-- الوسائط -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">الوسائط</td>
+                </tr>
+                <tr><td><span class="code">&lt;audio controls&gt;&lt;/audio&gt;</span></td><td>إدراج ملف صوتي</td></tr>
+                <tr><td><span class="code">&lt;video controls&gt;&lt;/video&gt;</span></td><td>إدراج ملف فيديو</td></tr>
+                <tr><td><span class="code">&lt;source&gt;</span></td><td>مصدر ملف صوتي أو فيديو</td></tr>
+                <tr><td><span class="code">&lt;iframe src="URL"&gt;</span></td><td>إدراج صفحة داخل صفحة</td></tr>
+        
+                <!-- الأكواد والبرمجة -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">الأكواد والبرمجة</td>
+                </tr>
+                <tr><td><span class="code">&lt;code&gt;</span></td><td>تنسيق النص ككود برمجي</td></tr>
+                <tr><td><span class="code">&lt;pre&gt;</span></td><td>عرض النص كما هو مع الاحتفاظ بالمسافات</td></tr>
+                <tr><td><span class="code">&lt;kbd&gt;</span></td><td>إبراز مدخلات لوحة المفاتيح</td></tr>
+                <tr><td><span class="code">&lt;samp&gt;</span></td><td>إبراز مخرجات البرامج</td></tr>
+        
+                <!-- عناصر متقدمة -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">عناصر متقدمة</td>
+                </tr>
+                <tr><td><span class="code">&lt;progress&gt;</span></td><td>شريط تقدم</td></tr>
+                <tr><td><span class="code">&lt;meter&gt;</span></td><td>مؤشر قيمة ضمن نطاق</td></tr>
+                <tr><td><span class="code">&lt;details&gt;</span></td><td>قسم قابل للطي</td></tr>
+                <tr><td><span class="code">&lt;summary&gt;</span></td><td>عنوان لقسم قابل للطي</td></tr>
+        
+                <!-- عناصر التحكم في العرض -->
+                <tr class="category">
+                    <td colspan="2" class="category-title">عناصر التحكم في العرض</td>
+                </tr>
+                <tr><td><span class="code">&lt;div&gt;</span></td><td>عنصر تقسيم عام</td></tr>
+                <tr><td><span class="code">&lt;span&gt;</span></td><td>عنصر نصي يستخدم للتنسيق</td></tr>
+                <tr><td><span class="code">&lt;bdo dir="rtl"&gt;</span></td><td>تغيير اتجاه النص</td></tr>
+                <tr><td><span class="code">&lt;time&gt;</span></td><td>تمثيل التاريخ والوقت</td></tr>
+            </tbody>
+        </table>
+    </div>
     
     <script>
+        // وظيفة البحث في الجدول
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const table = document.getElementById('htmlTable');
+            const rows = table.getElementsByTagName('tr');
+            const emptyResult = document.getElementById('emptyResult');
+            
+            function filterTable() {
+                const searchText = searchInput.value.toLowerCase();
+                let visibleRows = 0;
+                
+                // إظهار/إخفاء الصفوف بناءً على نص البحث
+                for (let i = 0; i < rows.length; i++) {
+                    const row = rows[i];
+                    const cells = row.getElementsByTagName('td');
+                    let found = false;
+                    
+                    // تجاهل صفوف العناوين الرئيسية
+                    if (row.classList.contains('category')) {
+                        continue;
+                    }
+                    
+                    // البحث في جميع الخلايا
+                    for (let j = 0; j < cells.length; j++) {
+                        const cell = cells[j];
+                        if (cell.textContent.toLowerCase().includes(searchText)) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    
+                    // إظهار أو إخفاء الصف
+                    if (found || searchText === '') {
+                        row.style.display = '';
+                        visibleRows++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+                
+                // إظهار أو إخفاء رسالة عدم وجود نتائج
+                if (visibleRows === 0 && searchText !== '') {
+                    emptyResult.style.display = 'block';
+                    table.parentElement.style.display = 'none';
+                } else {
+                    emptyResult.style.display = 'none';
+                    table.parentElement.style.display = 'block';
+                }
+                
+                // إظهار/إخفاء فئات العناوين
+                const categories = table.getElementsByClassName('category');
+                for (let i = 0; i < categories.length; i++) {
+                    const category = categories[i];
+                    let nextRow = category.nextElementSibling;
+                    let hasVisibleRows = false;
+                    
+                    // التحقق من وجود صفوف مرئية بعد الفئة
+                    while (nextRow && !nextRow.classList.contains('category')) {
+                        if (nextRow.style.display !== 'none') {
+                            hasVisibleRows = true;
+                            break;
+                        }
+                        nextRow = nextRow.nextElementSibling;
+                    }
+                    
+                    // إظهار أو إخفاء الفئة
+                    if (hasVisibleRows || searchText === '') {
+                        category.style.display = '';
+                    } else {
+                        category.style.display = 'none';
+                    }
+                }
+            }
+            
+            // إضافة مستمعي الأحداث للبحث
+            searchInput.addEventListener('keyup', filterTable);
+            searchBtn.addEventListener('click', filterTable);
+        });
+        
+        // وظيفة الرجوع للصفحة السابقة
         function goBack() {
-            window.history.back();  // الرجوع إلى الصفحة السابقة
+            window.history.back();
         }
     </script>
-    
 </body>
 </html>
